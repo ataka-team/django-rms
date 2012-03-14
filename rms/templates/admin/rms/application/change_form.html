@@ -161,6 +161,14 @@
 
 var new_rule_cursor = 0;
 
+function active_input(event) {
+  $(event.target).addClass("active");
+}
+
+function deactive_input(event) {
+  $(event.target).removeClass("active");
+}
+
 function disable_enter_key(event) {
       
   if ( event.which == 13 ) {
@@ -342,6 +350,11 @@ function add_rule(event){
       
             $(".vTextField").keypress(disable_enter_key); 
             
+            $(".vTextField").focus(active_input);
+            $(".vTextField").blur(deactive_input);
+            $(".vLargeTextField").focus(active_input);
+            $(".vLargeTextField").blur(deactive_input);
+            
 			new_rule_cursor = new_rule_cursor + 1;
 
 }
@@ -379,7 +392,7 @@ $( function() {
 		          ' <div class="td noexpand align-left" id="expand-ruledata-' + key_r +'">   </div>' + 
 		          ' <div class="td">' +
 		          '   <input name="rule-' + key_r + '-message" value="' + message + '" ' +
-		          '          class="vTextField" maxlength="100" id="rule-' + key_r + '-message" type="text">' +
+		          '          class="row1 vTextField" maxlength="100" id="rule-' + key_r + '-message" type="text">' +
 		          ' </div>' + 
 		          ' <div class="td">' +
 		          '   <input name="rule-' + key_r + '-slug" value="' + slug + '" ' +
@@ -388,14 +401,14 @@ $( function() {
 		          ' </div>' + 
                   ' <div class="td">' +
 		          '   <input name="rule-' + key_r + '-weight" value="' + weight + '" ' +
-		          '          class="vTextField weight" maxlength="50" id="rule-' + key_r + '-weight" type="text">' +
+		          '          class="row1 vTextField weight" maxlength="50" id="rule-' + key_r + '-weight" type="text">' +
 		          ' </div>' + 		          
 		          ' <div class="td align-right">' + 
 		          '   <input name="rule-' + key_r + '-DELETE" id="rule-' + key_r + '-DELETE" type="checkbox">' + 
 		          ' </div>' + 
 		          ' <div class="ruledata noexpandable" id="expandable-ruledata-' + key_r + '" >' +
 		          ' <label class="required" for="id_description">Rule data:</label> ' + 
-		          '   <textarea class="vLargeTextField rule-ruledata"' +
+		          '   <textarea class="row1 vLargeTextField rule-ruledata"' +
 		          '             name="rule-' + key_r + '-rule" cols="180" rows="5"' + 
 		          '             id="rule-' + key_r + '-rule">' +
 		          rule +
@@ -408,7 +421,7 @@ $( function() {
               ' <div class="td expand align-left" id="expand-rules-' + key_rk +'">   </div>' + 
               ' <div class="td">' +
               '   <input name="rulekey-' + key_rk + '-keyname" value="' + keyname + '" ' +
-              '          class="vTextField" maxlength="100" id="rulekey-' + key_rk + '-keyname" type="text">' +
+              '          class="row2 vTextField" maxlength="100" id="rulekey-' + key_rk + '-keyname" type="text">' +
               ' </div>' + 
               {# ' <div class="td">' + #}
               {# '   <a class="add-rules" id="add-rules-' + key_rk + '" href="#" >' + "Add"  + '</a>' + #}
@@ -435,11 +448,11 @@ $( function() {
           ' <div class="td expand align-left" id="expand-rulekeys-' + key_cat +'">   </div>' + 
           ' <div class="td">' +
           '   <input name="category-' + key_cat + '-catname" value="' + catname + '" ' +
-          '          class="vTextField" maxlength="100" id="id_category-' + key_cat + '-catname" type="text">' +
+          '          class="row1 vTextField" maxlength="100" id="id_category-' + key_cat + '-catname" type="text">' +
           ' </div>' + 
           ' <div class="td">' +
           '   <input name="category-' + key_cat + '-catid" value="' + catid + '" ' +
-          '          class="vTextField" maxlength="50" id="category-' + key_cat + '-catid" type="text">' +
+          '          class="row1 vTextField" maxlength="50" id="category-' + key_cat + '-catid" type="text">' +
           ' </div>' + 
           {# ' <div class="td align-right">' +  #}
           {# '   <input name="category-' + key_cat + '-DELETE" id="category-' + key_cat + '-DELETE" type="checkbox">' +  #}
@@ -520,7 +533,12 @@ $( function() {
 
     });
     
-    $(".vTextField").keypress(disable_enter_key); 
+    $(".vTextField").keypress(disable_enter_key);
+     
+    $(".vTextField").focus(active_input);
+    $(".vTextField").focusout(deactive_input);
+    $(".vLargeTextField").focus(active_input);
+    $(".vLargeTextField").focusout(deactive_input);
     
     setTimeout(function() { change_deleted_visibility(); }, 2000); 
 

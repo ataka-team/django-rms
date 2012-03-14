@@ -42,6 +42,13 @@
 var new_rule_key_cursor = 0;
 var new_category_cursor = 0;
 
+function active_input(event) {
+  $(event.target).addClass("active");
+}
+
+function deactive_input(event) {
+  $(event.target).removeClass("active");
+}
 
 function set_update_all_items_action(){
 	$('select[name=action] option:eq(3)').attr('selected', 'selected');
@@ -87,7 +94,11 @@ function add_rule_key(event){
 	  '</li>'; 
 
 	$(new_item).appendTo($('#ul-rulekeys-' + key_cat)); 
+	
     $(".vTextField").keypress(disable_enter_key); 
+
+    $(".vTextField").focus(active_input);
+    $(".vTextField").focusout(deactive_input);
     
 	new_rule_key_cursor = new_rule_key_cursor + 1;
 
@@ -136,7 +147,11 @@ function add_category(event){
 	
     $('#expand-rulekeys-' + key_cat).click(toggle_expandable);
     $('#add-rulekeys-' + key_cat).click(add_rule_key);
+    
     $(".vTextField").keypress(disable_enter_key); 
+
+    $(".vTextField").focus(active_input);
+    $(".vTextField").focusout(deactive_input);
     
 	new_category_cursor = new_category_cursor + 1;
 
@@ -174,7 +189,7 @@ function all_rules(data){
 						  ' <div class="td align-left">   </div>' + 
 						  ' <div class="td">' +
 						  '   <input name="rulekey-' + key_rk + '-keyname" value="' + keyname + '" ' +
-						  '          class="vTextField" maxlength="100" id="rulekey-' + key_rk + '-keyname" type="text">' +
+						  '          class="row2 vTextField" maxlength="100" id="rulekey-' + key_rk + '-keyname" type="text">' +
 						  ' </div>' + 
                           ' <div class="td align-right action-checkbox">' + 
 		                  '   <input type="checkbox" name="selected" value="rulekey-' + key_rk + '" class="action-select">' +
@@ -187,11 +202,11 @@ function all_rules(data){
 				  ' <div class="td expand align-left" id="expand-rulekeys-' + key_cat +'">   </div>' + 
 				  ' <div class="td">' +
 				  '   <input name="category-' + key_cat + '-catname" value="' + catname + '" ' +
-				  '          class="vTextField" maxlength="100" id="id_category-' + key_cat + '-catname" type="text">' +
+				  '          class="row1 vTextField" maxlength="100" id="id_category-' + key_cat + '-catname" type="text">' +
 				  ' </div>' + 
 				  ' <div class="td">' +
 				  '   <input name="category-' + key_cat + '-catid" value="' + catid + '" ' +
-				  '          class="vTextField" maxlength="50" id="category-' + key_cat + '-catid" type="text">' +
+				  '          class="row1 vTextField" maxlength="50" id="category-' + key_cat + '-catid" type="text">' +
 				  ' </div>' + 
 				  {# ' <div class="td">' + #}
 				  {# '   <a class="add-rulekeys" id="add-rulekeys-' + key_cat + '" href="#" >' + "Add"  + '</a>' + #}
@@ -227,12 +242,12 @@ function all_rules(data){
 		  ' </div>' + 
 		  ' <div class="td">' +
 		  '   <input name="application-' + key_app + '-appname" value="' + appname + '" ' +
-		  '          class="vTextField" maxlength="100" id="id_application-' + key_app + '-appname" type="text">' +
+		  '          class="row2 vTextField" maxlength="100" id="id_application-' + key_app + '-appname" type="text">' +
 		  '   <a class="" href="/admin/rms/application/' + key_app + '" >' + "View"  + '</a>' +
 		  ' </div>' + 
 		  ' <div class="td">' +
 		  '   <input name="application-' + key_app + '-appid" value="' + appid + '" ' +
-		  '          class="vTextField" maxlength="50" id="application-' + key_app + '-appid" type="text">' +
+		  '          class="row2 vTextField" maxlength="50" id="application-' + key_app + '-appid" type="text">' +
 		  ' </div>' +
 		  ' <div class="td">' +      
           '   <input type="file" id="application-' + key_app + '-icon" name="application-' + key_app + '-icon"> ' +        
@@ -290,6 +305,9 @@ function all_rules(data){
     $(".add-categories").click(add_category);
     
     $(".vTextField").keypress(disable_enter_key); 
+    
+    $(".vTextField").focus(active_input);
+    $(".vTextField").focusout(deactive_input);
     
     $("#save-button").click(set_update_all_items_action);
     

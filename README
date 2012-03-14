@@ -4,6 +4,13 @@ Setup
 
  TODO
 
+
+Available settings for settings.py::
+
+  HTTP_CACHE_CONTROL = 'max-age=600, must-revalidate'
+
+See more about on http://www.web-caching.com/mnot_tutorial/how.html
+
 Repository
 ----------
   

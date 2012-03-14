@@ -77,6 +77,21 @@
 }
 
 
+.row1 {
+    border: 0px !important;
+    background: none repeat scroll 0 0 #EDF3FE !important;
+}
+
+.row2{
+    border: 0px !important;
+    background: none repeat scroll 0 0 #FFFFFF !important;
+}
+
+input.active, textarea.active{
+    background: none repeat scroll 0 0 #FFFFFF !important;
+    border: 1px solid #CCCCCC !important;
+}
+
 .clear {
   clear: both;
   display: block;

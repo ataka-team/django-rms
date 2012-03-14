@@ -1,0 +1,315 @@
+{% load i18n admin_modify adminmedia %}
+
+{% if result_hidden_fields %}
+<div class="hiddenfields">{# DIV for HTML validation #}
+{% for item in result_hidden_fields %}{{ item }}{% endfor %}
+</div>
+{% endif %}
+{% if results %}
+<div class="results">
+
+
+
+<fieldset class="module">
+    <h2> Applications </h2>
+	
+		
+{% for result in results %}
+  
+  <div id="div-applications">  </div>
+  
+{% endfor %}
+
+</fieldset>
+
+<div class="submit-row">
+
+<button value="update_all_items" name="action" style="margin-right:5px; margin-bottom:2px; margin-top:1px; float:right;" title="Save" class="default button" id="save-button" type="submit">Save</button>
+<br style="clear:both;" />
+</div>
+
+</div>
+{% endif %}
+
+
+<!-- ###Begin: Tree view (Javascript)-->
+
+<script type="text/javascript" src="/static/rms/js/jquery-1.7.1.min.js"></script>
+
+<script type="text/javascript">
+
+
+var new_rule_key_cursor = 0;
+var new_category_cursor = 0;
+
+
+function set_update_all_items_action(){
+	$('select[name=action] option:eq(3)').attr('selected', 'selected');
+}
+
+function disable_enter_key(event) {
+      
+  if ( event.which == 13 ) {
+    event.preventDefault();
+  }
+  
+}
+
+function collapse() {
+        $('.expandable').hide();
+}
+
+
+function toggle_expandable (event) {
+        tmp = $(event.target).attr("id").split("-");
+        $('#expandable-' + tmp[1]+ '-' + tmp[2]).toggle();
+}
+
+
+function add_rule_key(event){
+    
+    var tmp = $(event.target).attr("id").split("-");
+	var key_cat = tmp[2];
+	var key_rk = "new" + new_rule_key_cursor;
+	new_item = '<li class="row2 tr new" id="rulekey-' + key_rk + '">' +
+	  ' <div class="td align-left">' + 
+	  '   <div style="display:none"> ' + 
+      '     <input type="hidden" value="' + key_cat + '" name="rulekey-' + key_rk + '-category"> ' +
+	  '   </div>' +
+	  ' </div>' + 
+	  ' <div class="td">' +
+	  '   <input name="rulekey-' + key_rk + '-keyname" value="' + '' + '" ' +
+	  '          class="vTextField" maxlength="100" id="rulekey-' + key_rk + '-keyname" type="text">' +
+	  ' </div>' + 
+	  ' <div class="td align-right action-checkbox">' + 
+	  '   <input type="checkbox" name="selected" value="rulekey-' + key_rk + '" class="action-select">' +
+	  ' </div>' + 					   						  
+	  '</li>'; 
+
+	$(new_item).appendTo($('#ul-rulekeys-' + key_cat)); 
+    $(".vTextField").keypress(disable_enter_key); 
+    
+	new_rule_key_cursor = new_rule_key_cursor + 1;
+
+}
+
+
+
+function add_category(event){
+    
+    var tmp = $(event.target).attr("id").split("-");
+	var key_app = tmp[2];
+	var key_cat = "new" + new_category_cursor;
+	
+    new_item = '<li class="row1 tr new" id="category-' + key_cat + '">' +
+	  ' <div class="td expand align-left" id="expand-rulekeys-' + key_cat +'">' +
+      '   <div style="display:none"> ' + 
+      '     <input type="hidden" value="' + key_app + '" name="category-' + key_cat + '-application"> ' +
+	  '   </div>' +	  
+	  ' </div>' + 
+	  ' <div class="td">' +
+	  '   <input name="category-' + key_cat + '-catname" value="' + '' + '" ' +
+	  '          class="vTextField" maxlength="100" id="id_category-' + key_cat + '-catname" type="text">' +
+	  ' </div>' + 
+	  ' <div class="td">' +
+	  '   <input name="category-' + key_cat + '-catid" value="' + '' + '" ' +
+	  '          class="vTextField" maxlength="50" id="category-' + key_cat + '-catid" type="text">' +
+	  ' </div>' + 
+	  {# ' <div class="td">' + #}
+	  {# '   <a class="add-rulekeys" id="add-rulekeys-' + key_cat + '" href="#" >' + "Add"  + '</a>' + #}
+	  {# ' </div>' + 				  #}
+	  ' <div class="td align-right action-checkbox">' + 
+	  '   <input type="checkbox" name="selected" value="category-' + key_cat + '" class="action-select">' +
+	  ' </div>' + 					   
+	  ' <div class="rulekeys expandable" id="expandable-rulekeys-' + key_cat + '" >' +
+      '   <div class="th align-left"> </div> ' + 
+      '   <div class="th"> Key name</div> ' +
+      '   <div class="th align-right"> Select </div> <ul class="tr" id="ul-rulekeys-' + key_cat + '">' +
+	  '  </ul>' + 
+      '  <div class="">' +
+	  '     <a class="add-rulekeys" id="add-rulekeys-' + key_cat + '" href="#" >' + "Add new rule key"  + '</a>' +
+      '  </div>' + 								  	  
+	  ' </div>' +
+	  '</li>';
+	
+	$(new_item).appendTo($('#ul-categories-' + key_app)); 
+	
+    $('#expand-rulekeys-' + key_cat).click(toggle_expandable);
+    $('#add-rulekeys-' + key_cat).click(add_rule_key);
+    $(".vTextField").keypress(disable_enter_key); 
+    
+	new_category_cursor = new_category_cursor + 1;
+
+}
+
+
+
+function all_rules(data){
+	var table_app_items = [];
+	
+	$.each(data, function(key_app, app) {
+        var key_app = app["id"];
+        var appid = app["appid"];
+        var appname = app["appname"];
+        var appicon = app["icon"];
+        var categories = app["categories"];
+        
+        var table_categories_items = [];
+        if (categories != undefined) {
+			
+			$.each(categories, function(key_cat, cat) {
+				var key_cat= cat["id"];
+                var catname= cat["catname"];
+                var catid= cat["catid"];
+                var rulekeys = cat["rulekeys"];
+                
+                var table_rulekeys_items = [];
+                if (rulekeys != undefined) {
+					
+					$.each(rulekeys, function(key_rk, rk) {
+                        var key_rk= rk["id"];
+                        var keyname= rk["keyname"];
+                        
+                        table_rulekeys_items.push('<li class="row2 tr" id="rulekey-' + key_rk + '">' +
+						  ' <div class="td align-left">   </div>' + 
+						  ' <div class="td">' +
+						  '   <input name="rulekey-' + key_rk + '-keyname" value="' + keyname + '" ' +
+						  '          class="vTextField" maxlength="100" id="rulekey-' + key_rk + '-keyname" type="text">' +
+						  ' </div>' + 
+                          ' <div class="td align-right action-checkbox">' + 
+		                  '   <input type="checkbox" name="selected" value="rulekey-' + key_rk + '" class="action-select">' +
+		                  ' </div>' + 					   						  
+						  '</li>');                        
+					});
+				};
+			    
+			    table_categories_items.push('<li class="row1 tr" id="category-' + key_cat + '">' +
+				  ' <div class="td expand align-left" id="expand-rulekeys-' + key_cat +'">   </div>' + 
+				  ' <div class="td">' +
+				  '   <input name="category-' + key_cat + '-catname" value="' + catname + '" ' +
+				  '          class="vTextField" maxlength="100" id="id_category-' + key_cat + '-catname" type="text">' +
+				  ' </div>' + 
+				  ' <div class="td">' +
+				  '   <input name="category-' + key_cat + '-catid" value="' + catid + '" ' +
+				  '          class="vTextField" maxlength="50" id="category-' + key_cat + '-catid" type="text">' +
+				  ' </div>' + 
+				  {# ' <div class="td">' + #}
+				  {# '   <a class="add-rulekeys" id="add-rulekeys-' + key_cat + '" href="#" >' + "Add"  + '</a>' + #}
+				  {# ' </div>' + 				  #}
+		          ' <div class="td align-right action-checkbox">' + 
+		          '   <input type="checkbox" name="selected" value="category-' + key_cat + '" class="action-select">' +
+		          ' </div>' + 					   
+				  ' <div class="rulekeys expandable" id="expandable-rulekeys-' + key_cat + '" >' +
+                  '   <div class="th align-left"> </div> ' + 
+                  '   <div class="th"> Key name</div> ' +
+                  '   <div class="th align-right"> Select </div>' +
+                  '   <ul class="tr" id="ul-rulekeys-' + key_cat + '">' +
+				  table_rulekeys_items.join('\n') +
+				  '   </ul>' +
+                  '   <div class="">' +
+				  '     <a class="add-rulekeys" id="add-rulekeys-' + key_cat + '" href="#" >' + "Add new rule key"  + '</a>' +
+				  '   </div>' + 								  
+				  ' </div>' +
+				  '</li>');
+  
+			});
+			
+		};
+
+        icon_link = "";
+        if (appicon){
+	        icon_link = '<a href="/media/' + appicon + '" >' + "Icon"  + '</a>';
+		}
+
+		table_app_items.push('<li class="row2 tr" id="application-' + key_app + '">' +
+		  ' <div class="td expand align-left" id="expand-categories-' + key_app +'">' +
+          '   <input type="hidden" name="_selected_action" value="' + key_app + '" >' +	  
+		  ' </div>' + 
+		  ' <div class="td">' +
+		  '   <input name="application-' + key_app + '-appname" value="' + appname + '" ' +
+		  '          class="vTextField" maxlength="100" id="id_application-' + key_app + '-appname" type="text">' +
+		  '   <a class="" href="/admin/rms/application/' + key_app + '" >' + "View"  + '</a>' +
+		  ' </div>' + 
+		  ' <div class="td">' +
+		  '   <input name="application-' + key_app + '-appid" value="' + appid + '" ' +
+		  '          class="vTextField" maxlength="50" id="application-' + key_app + '-appid" type="text">' +
+		  ' </div>' +
+		  ' <div class="td">' +      
+          '   <input type="file" id="application-' + key_app + '-icon" name="application-' + key_app + '-icon"> ' +        
+          icon_link +
+          ' </div>' +
+          {# ' <div class="td">' + #}
+          {# '   <a class="add-categories" id="add-categories-' + key_app + '" href="#" >' + "Add"  + '</a>' + #}
+          {# ' </div>' +		  #}
+		  ' <div class="td align-right action-checkbox">' + 
+		  '   <input type="checkbox" name="selected" value="application-' + key_app + '" class="action-select">' +
+		  ' </div>' + 		   	  		  
+		  ' <div class="categories expandable" id="expandable-categories-' + key_app + '" >' +
+          '   <div class="th align-left"> </div> ' + 
+          '   <div class="th"> Category name</div> ' +
+          '   <div class="th"> Category id</div> ' +					
+          {# '   <div class="th"> Add new Rule Key </div> ' + #}
+          '   <div class="th align-right"> Select </div> ' + 
+          '   <ul class="tr" id="ul-categories-' + key_app + '">' +
+		  table_categories_items.join('\n') +
+          '   </ul>' +
+          '   <div class="">' +
+          '   <a class="add-categories" id="add-categories-' + key_app + '" href="#" >' + "Add new category"  + '</a>' + 
+          ' </div>' +		  
+		  ' </div>' +
+		  '</li>');		
+		
+    });
+    
+
+    var table = $('<div/>');
+
+    var html_table_head = ' ' +
+      '<div class="tr"> ' +
+      '  <div class="th align-left"></div> ' +
+      '  <div class="th">Application name</div> ' +
+      '  <div class="th">Application Id</div> ' +
+      '  <div class="th">Application Image</div> ' +
+      {# '  <div class="th"> Add new category </div> ' + #}
+      '  <div class="th align-right">Select</div> ' +      
+      '</div>';
+    
+    var table_head = $(html_table_head);
+
+	var table_body = $('<ul/>',{
+	    class: "tr",
+        html: table_app_items.join('\n')
+    });
+
+    table.appendTo('#div-applications');
+    table_head.appendTo(table);
+    table_body.appendTo(table);
+    
+    $(".expand").click(toggle_expandable);
+    $(".add-rulekeys").click(add_rule_key);
+    $(".add-categories").click(add_category);
+    
+    $(".vTextField").keypress(disable_enter_key); 
+    
+    $("#save-button").click(set_update_all_items_action);
+    
+    collapse();
+};	
+	
+	
+	
+$( function() {
+	
+    var table_cat_items = [];
+
+	$.getJSON('/rules', all_rules);
+
+});
+
+	
+</script>
+
+
+
+<!-- ###End: Tree view (Javascript) -->
+

@@ -1,0 +1,1955 @@
+ [ 
+	{
+		"rule_key" : "template",
+		"category" : "normal",
+		"weight" : 1,	
+		"is_play" : true,	
+		"actions" : [ { 
+			"animation" : 8,
+			"speech" : [ "Commentary goes here...", null, null, null, null],
+			"move" : null,
+			"walk_to" : null, 
+			"walk" : null,
+			"should_queue" : true, 
+			"should_block" : true,
+			"disable_touch" : false,
+			"onAnimationStart" : null,
+			"onAnimationEnd" : null
+		} ]
+	
+	
+	
+	
+	
+	}, {
+		"rule_key" : "play-ball-success",
+		"state_delta" : {  "happiness" : 1 }
+	}, {
+		"rule_key" : "play-hula-success",
+		"state_delta" : {  "happiness" : 2 }
+	}, {
+		"rule_key" : "play-ball-failure"
+	}, {
+		"rule_key" : "play-hula-failure"
+	}, {
+		"rule_key" : "auto-notification-received"
+	}, {
+		"rule_key" : "auto-play-bonus",
+		"state_delta" : {  "happiness" : 1 },
+		"actions" : [ {  
+			"animation" : 24, 
+			"speech" : [ "Ooh, yeah...happy bonus!", "Aw, cool...heart bonus!", "That was so much fun!", "Thank for playing with me!", "Happy bonus, happy bonus, happy bonus!" ],
+			"sound" : "assets/snd/sfx/chimes.mp3",
+			"should_queue" : true, 
+			"should_block" : true
+
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-head",	
+		"category" : "normal",
+		"weight" : 15,
+		"is_play" : true,
+		"actions" : [ { 
+			"animation" : 28 ,
+			"speech" :  [ "Hee-hee-hee!", "Hi!", "Hey...", "Yo...", "Mr. Itsy has so many fun toys in his store!", "I hope the other Itsy Pets are having this much fun!", "That's my head...", "Thanks for petting me!", "Purrrr...", "Scratch my ear!", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/purring1.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+
+		} ]
+		
+	}, {
+		"rule_key" : "charactertouch-poke-head",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 28,
+			"sound" : "assets/snd/sfx/purring1.mp3"
+		 }, { 
+			"speech" :  [ "What is a pretzel's favorite dance?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "The twist!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "charactertouch-poke-head",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 28,
+			"sound" : "assets/snd/sfx/purring1.mp3"
+		 }, { 
+			"speech" :  [ "What did one toilet say to the other?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "You look a bit flushed!"],
+			"should_block" : false
+		} ]
+	
+	}, {
+		"rule_key" : "charactertouch-poke-head",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 28,
+			"sound" : "assets/snd/sfx/purring1.mp3"
+		 }, { 
+			"speech" :  [ "What has four wheels and flies?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "A garbage truck!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-head",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 28,
+			"sound" : "assets/snd/sfx/purring1.mp3"
+		 }, { 
+			"speech" :  [ "Why did the cow cross the road?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "To get to the Mooovies!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "charactertouch-poke-head",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 28,
+			"sound" : "assets/snd/sfx/purring1.mp3"
+		 }, { 
+			"speech" :  [ "Why did the lion spit out the clown?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Because he tasted funny!"],
+			"should_block" : false
+		} ]
+	
+	}, {
+		"rule_key" : "charactertouch-poke-head",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 28,
+			"sound" : "assets/snd/sfx/purring1.mp3"
+		 }, { 
+			"speech" :  [ "What is the best way to communicate with a fish?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Drop it a line!"],
+			"should_block" : false
+
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-head",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 28,
+			"sound" : "assets/snd/sfx/purring1.mp3"
+		 }, { 
+			"speech" :  [ "What's black and white and red all over?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "An embarrassed Zebra!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "charactertouch-poke-head",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 28,
+			"sound" : "assets/snd/sfx/purring1.mp3"
+		 }, { 
+			"speech" :  [ "What did one toilet say to the other?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "You look a bit flushed!"],
+			"should_block" : false
+		} ]
+	
+		
+	}, {
+		"rule_key" : "charactertouch-poke-head",	
+		"category" : "hungry",
+		"weight" : 15,
+		"is_play" : true,
+		"actions" : [ { 
+			"animation" : 28 ,
+			"speech" :  [ "Careful, I have a headache from a lack of food...", "Don't poke my eyes out!", "How about some food?", "Oooph...", "Sooo hungry...", "Oh, wish I had some food...", "Starving!", "Feed me, feed me, feed me!", null, null, null, null, null, null, null, null, null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/shake_head.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-head",
+		"is_play" : true,
+		"category" : "hungry",
+		"actions" : [ 
+		 { 
+			"animation" : 28,
+			"sound" : "assets/snd/sfx/shake_head.mp3"
+		 }, { 
+			"speech" :  [ "Where do burgers like to dance?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "At a meatball!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-head",
+		"is_play" : true,
+		"category" : "hungry",
+		"actions" : [ 
+		 { 
+			"animation" : 28,
+			"sound" : "assets/snd/sfx/shake_head.mp3"
+		 }, { 
+			"speech" :  [ "What kind of food is crazy about money?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "A dough-nut!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-head",
+		"is_play" : true,
+		"category" : "hungry",
+		"actions" : [ 
+		 { 
+			"animation" : 28,
+			"sound" : "assets/snd/sfx/shake_head.mp3"
+		 }, { 
+			"speech" :  [ "Why did the man go into the pizza business?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "He wanted to make some dough."],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-head",
+		"is_play" : true,
+		"category" : "hungry",
+		"actions" : [ 
+		 { 
+			"animation" : 28,
+			"sound" : "assets/snd/sfx/shake_head.mp3"
+		 }, { 
+			"speech" :  [ "What jam can't be eaten on toast?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "A traffic jam!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-head",
+		"is_play" : true,
+		"category" : "hungry",
+		"actions" : [ 
+		 { 
+			"animation" : 28,
+			"sound" : "assets/snd/sfx/shake_head.mp3"
+		 }, { 
+			"speech" :  [ "I'll tell more jokes if you get me something to eat..."],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "charactertouch-poke-head",	
+		"category" : "sleepy",
+		"weight" : 15,
+		"is_play" : true,
+		"actions" : [ { 
+			"animation" : 28 ,
+			"speech" :  [ "Yeah?", "Mr. Itsy would've put me to bed by now...", "The ItsyPets and I used to sleep all the time!", "How about you put me to sleep?", "Aw, that feels good!", "I'm exhausted...", "Who's tired? I am!", "Snore...", "I wanna go to dreamland!", "Counting sheep...", null, null, null, null, null, null, null, null, null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/snore3.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-head",
+		"is_play" : true,
+		"category" : "sleepy",
+		"actions" : [ 
+		 { 
+			"animation" : 28,
+			"sound" : "assets/snd/sfx/snore3.mp3"
+		 }, { 
+			"speech" :  [ "Why won't a bicycle stand up when it's not moving?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "It's too tired!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-head",
+		"is_play" : true,
+		"category" : "sleepy",
+		"actions" : [ 
+		 { 
+			"animation" : 28,
+			"sound" : "assets/snd/sfx/snore3.mp3"
+		 }, { 
+			"speech" :  [ "What goes up, but never comes down?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Your age!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-head",
+		"is_play" : true,
+		"category" : "sleepy",
+		"actions" : [ 
+		 { 
+			"animation" : 28,
+			"sound" : "assets/snd/sfx/snore3.mp3"
+		 }, { 
+			"speech" :  [ "You know, I'd tell more jokes if I wasn't so sleepy..."],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-head",	
+		"category" : "moody",
+		"weight" : 6,
+		"is_play" : true,
+		"actions" : [ { 
+			"animation" : 28 ,
+			"speech" :  [ "Yo...", "Whatever...", "Beep, beep...", null, null, null, null, null, null, null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/shake_head.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+
+		} ]
+
+		
+		
+		
+		
+		
+		
+	}, {
+		"rule_key" : "charactertouch-poke-body",	
+		"category" : "normal",
+		"weight" : 15,
+		"is_play" : true,
+		"actions" : [ { 
+			"animation" : 9 ,
+			"speech" :  [ "Haha, that tickles!", "I wonder how Mr. Itsy is doing...", "Funny tummy!", "Haw-haw!", "Hey-o!", "That's my belly...", "That's where the food goes...", "I'll tell you when I'm hungry...", "Oomph...", "That's my tummy...", "Rub my belly!", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/purring2.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/purring2.mp3"
+		 }, { 
+			"speech" :  [ "Why did the lazy man want a job in a bakery?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "So he could loaf around!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/purring2.mp3"
+		 }, { 
+			"speech" :  [ "Why did the farmer ride his horse to town?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "It was too heavy to carry!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/purring2.mp3"
+		 }, { 
+			"speech" :  [ "What do you get when you cross a snowman with a vampire??"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Frostbite!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/purring2.mp3"
+		 }, { 
+			"speech" :  [ "What do prisoners use to call each other?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Cell phones!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/purring2.mp3"
+		 }, { 
+			"speech" :  [ "What do you get from a pampered cow?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Spoiled milk!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/purring2.mp3"
+		 }, { 
+			"speech" :  [ "Why do sea-gulls fly over the sea?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Because if they flew over the bay they would be bagels!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/purring2.mp3"
+		 }, { 
+			"speech" :  [ "What did the porcupine say to the cactus?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "'Is that you mommy?'"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/purring2.mp3"
+		 }, { 
+			"speech" :  [ "How do you make a tissue dance?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Put a little boogey in it!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/purring2.mp3"
+		 }, { 
+			"speech" :  [ "What did the water say to the boat?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Nothing, it just waved!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/purring2.mp3"
+		 }, { 
+			"speech" :  [ "Why don't skeletons fight each other?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "They don't have the guts!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/purring2.mp3"
+		 }, { 
+			"speech" :  [ "How do you make a skunk stop smelling?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Pinch its nose closed!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/purring2.mp3"
+		 }, { 
+			"speech" :  [ "Why do Hummingbirds hum?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "They've never learned the words!"],
+			"should_block" : false
+		} ]
+		
+		
+		}, {
+		"rule_key" : "charactertouch-poke-body",	
+		"category" : "hungry",
+		"weight" : 15,
+		"is_play" : true,
+		"actions" : [ { 
+			"animation" : 9 ,
+			"speech" :  [ "Feed my belly!", "Get outta here...", "Mr. Itsy would feed us all the time!", "The otehr ItsyPets are probably eating right now...", "Woof...", "Food please...", "I'm so hungry!", "Oh, where did all the food go?", "My tummy is mad at you.", "I'm feeling dizzy...", null, null, null, null, null, null, null, null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/purring2.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "hungry",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/purring2.mp3"
+		 }, { 
+			"speech" :  [ "Why do the French like to eat snails?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Because they don't like fast food!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "hungry",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/purring2.mp3"
+		 }, { 
+			"speech" :  [ "Why shouldn't you tell an egg a joke?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Because it might crack up!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "hungry",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/purring2.mp3"
+		 }, { 
+			"speech" :  [ "What did the baby corn say to it's mom?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Where is pop corn?"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "hungry",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/purring2.mp3"
+		 }, { 
+			"speech" :  [ "What are twins favorite fruit?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Pears!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "charactertouch-poke-body",	
+		"category" : "sleepy",
+		"weight" : 15,
+		"is_play" : true,
+		"actions" : [ { 
+			"animation" : 9 ,
+			"speech" :  [ "I'm sleepy...", "Mr. Itsy would always tuck me in at night...", "Ooh yeah...me likey...", "That's my belly...", "Snore...", "You know there's a bed over there for me, right?", "I could really go for sleep...", "Can't move...so tired...", "Huh?", null, null, null, null, null, null, null, null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/snore3.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "sleepy",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/snore3.mp3"
+		 }, { 
+			"speech" :  [ "Shall I tell you the joke about the bed?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "I can't cause it hasn't been made up yet!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "sleepy",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/snore3.mp3"
+		 }, { 
+			"speech" :  [ "Why did the man climb on to the chandelier?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Because he was a light sleeper!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-body",
+		"is_play" : true,
+		"category" : "sleepy",
+		"actions" : [ 
+		 { 
+			"animation" : 9,
+			"sound" : "assets/snd/sfx/snore3.mp3"
+		 }, { 
+			"speech" :  [ "Why is the sea always restless?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Cuz' It has so many rocks in its bed!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-poke-body",	
+		"category" : "moody",
+		"weight" : 6,
+		"is_play" : true,
+		"actions" : [ { 
+			"animation" : 9 ,
+			"speech" :  [ "Haha, quit it...", "I'm grumpy...", "The ItsyPets and I would have played together all the time...", "Eh...grumble, grumble, grumble...", null, null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/purring2.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+		} ]
+
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"weight" : 12,
+		"actions" : [ {  
+			"animation" : 21 , 
+			"sound" : "assets/snd/sfx/squeak1.mp3",
+			"speech" : [ "Nice day we're having...", "What's shakin'?!", "Hey there...", "I wonder how much I'm gonna eat today...", "Remember, feeding me gives me energy...", "I wonder what kind of toys I'm gonna be able to play with...", "If my pillow is out, then I'm ready for bed...", "I love hanging out in the backyard...", "I hope I'm not too needy...", "Thanks for taking care of me...", null, null, null, null, null, null ],
+			"should_queue" : false, 
+			"should_block" : false
+
+		} ]
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"weight" : 12,
+		"actions" : [ { 
+			"animation" : 20 ,
+			"sound" : "assets/snd/sfx/squeak2.mp3", 
+			"speech" : [ "Hmmmm...", "I really love eating...", "I wonder what the other ItsyPets are doing...", "Mr. Itsy is such a nice man...", "I have fun with you...", "Wow, this is a big backyard!", "I see my house, my box of toys, my bowl...I love it here!", null, null, null, null, null ],
+			"should_queue" : false, 
+			"should_block" : false
+
+		} ]
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 20,
+			"sound" : "assets/snd/sfx/squeak4.mp3"
+		 }, { 
+			"speech" :  [ "What type of music are balloons scared of?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Pop music!"],
+			"should_block" : false
+		} ]
+		
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"weight" : 12,
+		"actions" : [ { 
+			"animation" : 22, 
+			"sound" : "assets/snd/sfx/sneeze_baby.mp3",
+			"should_queue" : false,
+			"speech" :  [ "Excuse me...", "Ooomph...", "Whoa!", "Sniffle...", null, null, null, null, null, null, null ],
+			"should_block" : false
+		} ]
+
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 22, 
+			"sound" : "assets/snd/sfx/sneeze_baby.mp3"
+		 }, { 
+			"speech" :  [ "What kind of nuts always seems to have a cold?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Cashews!"],
+			"should_block" : false
+		} ]
+
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 23, 
+			"sound" : "assets/snd/sfx/dig.mp3",
+			"should_queue" : false,
+			"speech" :  [ "China, here I come!", "What else am I supposed to do with a shovel?", "I'd rather use a shovel than my feet...", "I've been working on the railroad...", null, null, null, null, null, null, null, null ],
+			"should_block" : false,
+			"duration" : 5000
+		} ]	
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 25, 
+			"sound" : "assets/snd/sfx/squeak1.mp3",
+			"should_queue" : false,
+			"speech" :  [ "Look, I'm an airplane!", "Vroooooom!", null, null, null, null, null ],
+			"should_block" : false
+		} ]	
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 26, 
+			"sound" : "assets/snd/sfx/squeak4.mp3",
+			"should_queue" : false,
+			"speech" :  [ "La-di-da...", "Hey there...", null, null, null, null ],
+			"should_block" : false
+		} ]	
+		
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 17, 
+			"sound" : "assets/snd/sfx/squeak1.mp3",
+			"should_queue" : false,
+			"speech" :  [ "Mmm, my tummy feels good...", "I can scratch my own belly...haha!", "My, what a big belly I have!", "Scratch!", "I have spots!", "I'm orange!", "Eating oranges give me my color!", "Rubbin' my belly!" ],
+			"should_block" : false
+		} ]	
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 17,
+			"sound" : "assets/snd/sfx/squeak1.mp3"
+		 }, { 
+			"speech" :  [ "What do you call cheese that isn't yours?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Nacho cheese!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 17,
+			"sound" : "assets/snd/sfx/squeak1.mp3"
+		 }, { 
+			"speech" :  [ "What's the best thing to put into a pie?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Your teeth!"],
+			"should_block" : false
+		} ]
+		
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 18 , 
+			"should_queue" : false,
+			"speech" :  [ "You're the best!", "Woo-hoo, look at me shake my belly...", "Shake, shake, shake my belly!", "I'm a dancing machine!", null, null, null, null ],
+			"should_block" : false
+		} ]	
+		
+	
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"weight" : 6,
+		"actions" : [ { 
+			"should_queue" : false,
+			"speech" :  [ "I wonder what's on tv tonight...", null, null, null, null, null ],
+			"should_block" : false
+		} ]	
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"speech" :  [ "Why do gorillas have big nostrils?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Because they have big fingers!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"speech" :  [ "How do you make a walnut laugh?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Crack it up!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"speech" :  [ "What do elves make sandwiches with?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Shortbread!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"speech" :  [ "What do you give to a sick lemon?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Lemon aid!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"speech" :  [ "In which school do you learn to make ice cream?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Sunday School!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"speech" :  [ "What part of the turkey is musical?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "The drumstick!"],
+			"should_block" : false
+		} ]
+		
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"weight" : 3,
+		"actions" : [ { 
+			"animation" : 29 , 
+			"should_queue" : false,
+			"speech" :  [ "Eh, this is like a really bad iPad...", "What is a 'Kardashian'?", "Am I supposed to read this or pee on it?", "I'm geting ink on my hands...", "I hear this thing is called a 'newspaper'...", null, null, null, null ],
+			"sound" : "assets/snd/sfx/slide2.mp3",
+			"should_block" : false,
+			"duration" : 5000
+		} ]	
+
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"weight" : 3,
+		"actions" : [ { 
+			"animation" : 19 , 
+			"should_queue" : false,
+			"sound" : "assets/snd/sfx/boing1.mp3",
+			"should_block" : false
+		} ]	
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"weight" : 4,
+		"actions" : [ { 
+			"animation" : 18 , 
+			"should_queue" : false,
+			"should_block" : false
+		} ]	
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 24 , 
+			"should_queue" : false,
+			"speech" :  [ "Woooooooo, I wish I could fly...", "Mr. Itsy has tons of ItsyPets at his store...", "This is my 'I ate spicy food' face...", "I saw a bird do this once...", null, null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/happy.mp3",
+			"should_block" : false
+		} ]	
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "normal",
+		"actions" : [ 
+		 { 
+			"animation" : 24,
+			"sound" : "assets/snd/sfx/happy.mp3"
+		 }, { 
+			"speech" :  [ "What is a Cheerleader's favorite food?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Cheerios!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "sleepy",
+		"weight" : 6,
+		"actions" : [ {  
+			"animation" : 21 , 
+			"speech" : [ "Phew, I'm pretty pooped...", "Who's tired? I am!", "Hey...", "I wonder when I'll get to sleep...", "Remember, getting a good night's sleep makes me happier...", "My favorite letters right now are Zzzzzzzz...", null, null, null, null, null ],
+			"should_queue" : false, 
+			"should_block" : false
+
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "sleepy",
+		"actions" : [ 
+		 { 
+			"animation" : 21
+		 }, { 
+			"speech" :  [ "Why did the man run around his bed?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "To catch up on his sleep!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "sleepy",
+		"actions" : [ 
+		 { 
+			"animation" : 21
+		 }, { 
+			"speech" :  [ "Why do you go to bed every night?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Because the bed won't come to you!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "sleepy",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 20, 
+			"speech" : [ "Hmmmm...", "I really love sleeping...", "I have fun with you...which makes me tired...", "I hear crickets...", "Anything can be fixed with a nap...", "Good thing I can't drive cuz I'm exhausted...", null, null, null, null ],
+			"should_queue" : false, 
+			"should_block" : false
+
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "sleepy",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 22, 
+			"sound" : "assets/snd/sfx/sneeze_baby.mp3",
+			"should_queue" : false,
+			"speech" :  [ "Excuse me...", "Ooomph...", "Whoa!", "Sniffle...", null, null, null, null, null ],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "sleepy",
+		"actions" : [ 
+		 { 
+			"animation" : 22, 
+			"sound" : "assets/snd/sfx/sneeze_baby.mp3"
+		 }, { 
+			"speech" :  [ "What kind of nuts always seems to have a cold?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Cashews!"],
+			"should_block" : false
+		} ]
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "sleepy",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 17 , 
+			"should_queue" : false,
+			"speech" :  [ "Uh-oh, I think my stomach fell asleep...", "Even my tummy is telling me I'm sleepy...", "1-2-3-4...I'm just counting sheep...5-6...", "So sleepy...", "You know how comfy my bed is?" ],
+			"should_block" : false
+		} ]	
+		
+	
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "sleepy",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 26 , 
+			"should_queue" : false,
+			"speech" :  [ "This move lulls me to sleep...", "Whoa, my belly is mesmerizing...", null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/squeak4.mp3",
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "sleepy",
+		"actions" : [ 
+		 { 
+			"animation" : 26,
+			"sound" : "assets/snd/sfx/squeak4.mp3"
+		 }, { 
+			"speech" :  [ "When is the moon the heaviest?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "When it's full!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "sleepy",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 27 , 
+			"should_queue" : false,
+			"speech" :  [ "Can I please just go to sleep?", "Mr. Itsy used to give me warm milk before bed...", "Sleep-walking!", "I feel like a zombie...brains!", null, null, null, null ],
+			"sound" : "assets/snd/sfx/squeak1.mp3",
+			"should_block" : false
+		} ]	
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "sleepy",
+		"actions" : [ 
+		 { 
+			"animation" : 27,
+			"sound" : "assets/snd/sfx/squeak1.mp3"
+		 }, { 
+			"speech" :  [ "What kind of tree can fit into your hand?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "A palm tree!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "sleepy",
+		"actions" : [ 
+		 { 
+			"animation" : 27,
+			"sound" : "assets/snd/sfx/squeak1.mp3"
+		 }, { 
+			"speech" :  [ "What washes up on very small beaches?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Microwaves!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "sleepy",
+		"weight" : 3,
+		"actions" : [ { 
+			"animation" : 29 , 
+			"should_queue" : false,
+			"speech" :  [ "Reading makes me even more tired...", "Ooh, look, mattresses are on sale...", null, null, null, null ],
+			"sound" : "assets/snd/sfx/slide2.mp3",
+			"should_block" : false,
+			"duration" : 5000
+		} ]	
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "sleepy",
+		"weight" : 6,
+		"actions" : [ { 
+			"should_queue" : false,
+			"speech" :  [ "Snore...", "Mr. Itsy used to read me bedtime stories...", "Phew, I sure could use some sleep...",  "Boy, I'm exhausted...",  "Any chance I can go to sleep? It'd make me very happy...",  "Yawn...", null, null, null, null ],
+			"sound" : "assets/snd/sfx/snore3.mp3",
+			"should_block" : false
+		} ]	
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "sleepy",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 24 , 
+			"should_queue" : false,
+			"speech" :  [ "I wanna go to sleep!!!", "Come on, I'm so tired...", "Just hit me on the head so I can sleep...", null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/squeak4.mp3",
+			"should_block" : false
+		} ]	
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"weight" : 6,
+		"actions" : [ {  
+			"animation" : 21 , 
+			"speech" : [ "Um, just an FYI, but I'm really hungry...", "If I had three wishes right now, they'd be for food, food, and food...", "I sure could go for a sandwich, some soup, or anything really...", "Remember, putting food in me makes me more energetic...", "Overweight is something that just sort of snacks up on you...", "Mr. Itsy always told me to eat well and stay healthy...", null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/squeak2.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+
+		} ]
+		
+		
+	}, {
+		"rule_key" : "onboarding-prompt-play",
+		"actions" : [ 
+		              {  "speech" : ["Looks like there's a lot to do here!"], "duration" : 10000 },
+					  {  "sound" : "assets/snd/sfx/squeak2.mp3"}
+		        ]
+	}, {
+		"rule_key" : "onboarding-complete-play",
+		"state_delta" : { "happiness" : 1 }
+		
+		
+	}, {
+		"rule_key" : "onboarding-prompt-eat",
+		"actions" : [ 
+					  {  "speech" : ["If you play with me, I get happiness hearts!"]},
+		              {  "walk_to" : 1035, "onAnimationStart" : "common.smoothScrollTo(750,0);"},
+		              {  "speech" : ["You can take photos to feed me!"]},
+					  {  "speech" : ["Food gives me energy stars...which means I'm full!"]},
+					  {  "sound" : "assets/snd/sfx/squeak4.mp3"}		         
+				]
+	}, {
+		"rule_key" : "onboarding-prompt-sleep",
+		"actions" : [ 
+		              {  "walk_to" : 1800 , "onAnimationStart" : "common.smoothScrollTo(document.width - window.innerWidth-250, 0 );" },
+		              {  "speech" : ["When I'm tired, I can sleep here in my bed!"]},
+					  {  "sound" : "assets/snd/sfx/squeak1.mp3"}
+		        ]
+
+	}, {
+		"rule_key" : "onboarding-onboard-complete",
+		"actions" : [ {
+						"animation" : 5,	
+						"animation_lib" : "assets/ani/giraffe/sleep.html",
+						"disable_touch" : true },
+		              { "animation" : 2,
+						"duration" : 6000,
+						"speech" : ["Phew, I needed that nap, thanks for tucking me in!"],
+		              	"onAnimationEnd" : "sound.stopAll(); location.href='index.html?firstload=true';"
+		              } ]
+
+	
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 20 , 
+			"speech" : [ "Hmmmm...", "I really love eating...", "Lack of food means I'm hungry...seems like simple math...", "Mr. Itsy used to feed me a lot...", null, null, null, null, null, null ],
+			"should_queue" : false, 
+			"should_block" : false
+
+		} ]
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 22 , 
+			"sound" : "assets/snd/sfx/sneeze_baby.mp3",
+			"should_queue" : false,
+			"speech" :  [ "Excuse me...", "Ooomph...", "Whoa!", "Sniffle...", null, null, null, null, null ],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 17 , 
+			"should_queue" : false,
+			"speech" :  [ "Umm, I think my stomach is eating itself...", "My stomach just told me that it's feeling neglected...", "Oh, the pain and misery of an empty stomach...", "Starving!", "Oh, where art thou food?", "My tummy is empty..." ],
+			"sound" : "assets/snd/sfx/squeak2.mp3",
+			"should_block" : false
+		} ]	
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 26 , 
+			"should_queue" : false,
+			"speech" :  [ "Oh, my tummy is so empty...", "I'm starving...how you feeling?", null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/squeak2.mp3",
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"actions" : [ 
+		 { 
+			"animation" : 26,
+			"sound" : "assets/snd/sfx/squeak2.mp3"
+		 }, { 
+			"speech" :  [ "Did you hear the joke about the peanut butter?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "I'm not telling you. You might spread it!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"actions" : [ 
+		 { 
+			"animation" : 26,
+			"sound" : "assets/snd/sfx/squeak2.mp3"
+		 }, { 
+			"speech" :  [ "Why did the banana go to the doctor?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "Because it wasn't peeling well!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"weight" : 3,
+		"actions" : [ { 
+			"animation" : 29 , 
+			"should_queue" : false,
+			"speech" :  [ "I'm so hungry I could eat this newspaper...", "Ooh, look, steaks are on sale...", null, null, null, null ],
+			"sound" : "assets/snd/sfx/slide2.mp3",
+			"should_block" : false,
+			"duration" : 5000
+		} ]	
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"weight" : 6,
+		"actions" : [ { 
+			"should_queue" : false,
+			"speech" :  [ "My tummy is rumbling...", "Geez, I'm really in the mood for a meal...",  "Do chickens think rubber humans are funny?", null, null, null, null ],
+			"should_block" : false
+		} ]	
+		
+		}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 23, 
+			"sound" : "assets/snd/sfx/dig.mp3",
+			"should_queue" : false,
+			"speech" :  [ "Guess I'm digging for some food today...", "If I was at the toy store, I'd have eaten by now...", "What else am I supposed to do with a shovel?", "Maybe I should just eat this dirt...", null, null, null, null ],
+			"should_block" : false,
+			"duration" : 5000
+		} ]	
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"weight" : 2,
+		"actions" : [ { 
+			"animation" : 19 , 
+			"should_queue" : false,
+			"speech" :  [ "Toby hungry!", "Hey!", "Mr. Itsy would have fed me by now...", null, null, null, null ],
+			"sound" : "assets/snd/sfx/boing1.mp3",
+			"should_block" : false
+		} ]	
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 27 , 
+			"should_queue" : false,
+			"speech" :  [ "What does a giraffe have to do to get some food around here?", "Toby hungry, Toby hungry, Toby hungry...", null, null, null, null ],
+			"sound" : "assets/snd/sfx/squeak1.mp3",
+			"should_block" : false
+		} ]	
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"actions" : [ 
+		 { 
+			"animation" : 27,
+			"sound" : "assets/snd/sfx/squeak1.mp3"
+		 }, { 
+			"speech" :  [ "What did the hot dog say when he crossed the finish line?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "I'm a weiner!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"actions" : [ 
+		 { 
+			"animation" : 27,
+			"sound" : "assets/snd/sfx/squeak1.mp3"
+		 }, { 
+			"speech" :  [ "Why does a banana need sunscreen?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "I'm a weiner!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 19, 
+			"should_queue" : false,
+			"speech" :  [ "Bacon...", "Feed me!", "What are you doing? I'm hungry!", "Hello! Is there anybody out there? Feed me por favor!", null, null, null, null ],
+			"sound" : "assets/snd/sfx/happy.mp3",
+			"should_block" : false
+		} ]	
+			
+		
+		
+		
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "moody",
+		"weight" : 6,
+		"actions" : [ {  
+			"animation" : 21 , 
+			"speech" : [ "Hey, where've you been?", "Oh, now you wanna play with me?", "I thought you weren't my friend anymore...", "I didn't think I was high-maintenance...", "Hi...how are you?", null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/squeak4.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "moody",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 20, 
+			"speech" : [ "Blah...", "Eh...I'm a little bored...", "Watching the grass grow is...unfulfilling...", null, null, null ],
+			"should_queue" : false, 
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"actions" : [ 
+		 { 
+			"animation" : 20,
+			"sound" : "assets/snd/sfx/squeak1.mp3"
+		 }, { 
+			"speech" :  [ "Why did the lazy man want a job in a bakery?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "So he could loaf around!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "hungry",
+		"actions" : [ 
+		 { 
+			"animation" : 20,
+			"sound" : "assets/snd/sfx/squeak1.mp3"
+		 }, { 
+			"speech" :  [ "Why did the farmer ride his horse to town?"],
+			"disable_touch" : true
+		},  { 
+			"speech" :  [ "It was too heavy to carry!"],
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "moody",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 22 , 
+			"sound" : "assets/snd/sfx/sneeze_baby.mp3",
+			"should_queue" : false,
+			"speech" :  [ "Excuse me...", "Ooomph...", "Whoa!", "Sniffle...", null, null, null ],
+			"should_block" : false
+		} ]
+		
+		}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "moody",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 23, 
+			"sound" : "assets/snd/sfx/dig.mp3",
+			"should_queue" : false,
+			"speech" :  [ "Eh, don't talk to me while I'm shoveling...", "What, never seen a giraffe dig holes?", null, null, null ],
+			"should_block" : false,
+			"duration" : 5000
+		} ]	
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "moody",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 17, 
+			"should_queue" : false,
+			"speech" :  [ "Umm, I think my stomach is eating itself...", "My stomach just told me that it's feeling neglected...", "Oh, the pain and misery of an empty stomach...", "What you doin'?", "Eh, I'm bored...", "Oh well..." ],
+			"sound" : "assets/snd/sfx/squeak2.mp3",
+			"should_block" : false
+		} ]	
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "moody",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 26 , 
+			"should_queue" : false,
+			"speech" :  [ "I wonder what Mr. Itsy is up to...", "What am I doing here?", "I'm lonely...", "Is this grass really greener on the other side?", "I'm waiting for Godot...", null, null, null, null ],
+			"sound" : "assets/snd/sfx/squeak1.mp3",
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "moody",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 27 , 
+			"should_queue" : false,
+			"speech" :  [ "My patience is really being tested today...", "You know, I'm not grumpy when you play with me...", "Hey...HEY!", null, null, null, null ],
+			"sound" : "assets/snd/sfx/squeak4.mp3",
+			"should_block" : false
+		} ]	
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "moody",
+		"weight" : 3,
+		"actions" : [ { 
+			"animation" : 29 , 
+			"should_queue" : false,
+			"speech" :  [ "Blah...there's nothing funny in here today...", "Eh, these comics aren't funny at all...", "I thought only old people read newspapers...", null, null, null, null ],
+			"sound" : "assets/snd/sfx/slide2.mp3",
+			"should_block" : false,
+			"duration" : 5000
+		} ]	
+	}, {
+		"rule_key" : "auto-idle-idle",
+		"category" : "moody",
+		"weight" : 6,
+		"actions" : [ { 
+			"animation" : 24 , 
+			"should_queue" : false,
+			"speech" :  [ "Booooo...can I get some attention please?", "Hello? Hello? Hello?", "Why do I even bother...I just sit here...", "I know I'm grumpy, but what else am I supposed to do?", "I know you are but what am I?", null, null, null, null ],
+			"sound" : "assets/snd/sfx/squeak2.mp3",
+			"should_block" : false
+		} ]			
+		
+		
+			
+	
+		
+		
+		
+	
+	
+		
+		
+		
+	}, {
+		"rule_key" : "devicegesture-shake-shake",	
+		"is_play" : true,
+		"actions" :[ {
+			"animation" : 18,
+			"speech" : [ "Whooooaaa!", "Milkshake?", "Shaking makes my tummy feel funny...", "Earthquake?", null, null, null ],
+			"sound" : "assets/snd/sfx/rattle1.mp3",			
+			"should_queue" : false, 
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-swipe-up1",	
+		"is_play" : true,
+		"actions" : [ {
+			"animation" : 10 ,
+			"speech" : [ "Jump!", "Upsie daisie!", "Boing!", null, null, null, null ],
+			"sound" : "assets/snd/sfx/boing1.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+		}]
+	}, {
+		"rule_key" : "charactertouch-swipe-up2",	
+		"is_play" : true,
+		"actions" : [ {
+			"animation" : 10 ,
+			"speech" :[ "Woo-hoo!", "Yeah!", "I love jumping!", "French fries!", "Whoa, this is high!", null, null, null, null ],
+			"sound" : "assets/snd/sfx/boing1.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-swipe-up3",	
+		"is_play" : true,
+		"actions" : [ {
+			"animation" : 11 ,
+			"sound" : "assets/snd/sfx/boing2.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-swipe-down",	
+		"is_play" : true,
+		"actions" : [ {
+			"animation" : 12 ,
+			"speech" :[ "I'm very obedient...", "Plop!", "Down!", "Okay...", "Tofu?", null, null, null, null, null, null, null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/bonk2.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+		} ]
+	},	{
+		"rule_key" : "charactertouch-swipe-left1",	
+		"is_play" : true,
+		"actions" : [ {
+			"move" : [ -50, 800 ],
+			"animation" :  13 ,
+			"speech" : [ "Hey!", "Bacon?", "Broccoli?", "Hee-hee!", "Whatcha want?", null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/swoosh1.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+		}]
+	}, {
+		"rule_key" : "charactertouch-swipe-left2",	
+		"is_play" : true,
+		"actions" : [ {
+			"animation" :  13 ,
+			"move" : [ -100, 800 ],
+			"speech" : [ "Whoa!", "Look out!", "Oomph...", "Oranges?", "Tacos?", "Swipe!", "Fingers!", null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/cartoon_feet.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-swipe-left3",	
+		"is_play" : true,
+		"actions" : [{
+			"move" : [ -250, 1300 ],
+			"animation" :  14 ,
+			"speech" : [ "Ouch!", "Why'd you do that?", "Uh-oh...oops!", "Hey buddy, careful...", "Hey!", "Look out!", null, null, null, null ],
+			"sound" : "assets/snd/sfx/crashfall.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-swipe-right1",	
+		"is_play" : true,
+		"actions" : [ {
+			"move" : [ 50, 800 ],
+			"animation" :  15 ,
+			"speech" : [ "Huh?", "Bananas?", "Can I help you?", "What?", "Popcorn?", null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/swoosh1.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-swipe-right2",	
+		"is_play" : true,
+		"actions" : [ {
+			"move" : [ 100, 800 ],
+			"animation" :  15 ,
+			"speech" : [ "Hey!", "Not cool!", "That isn't nice...", "What?", "Wait a minute...", "Haha, tag you're it!", null, null, null, null, null ],
+			"sound" : "assets/snd/sfx/cartoon_feet.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+		} ]
+	}, {
+		"rule_key" : "charactertouch-swipe-right3",	
+		"is_play" : true,
+		"actions" : [ {
+			"speech" : [ "Oh, I fell over...", "Whatcha' do that for?", "Careful!", "Come on!", "Watch your finger!", "That sorta hurt...", null, null, null, null ],
+			"animation" : 16 ,
+			"move" : [ 250, 1300 ],
+			"sound" : "assets/snd/sfx/crashfall.mp3",
+			"should_queue" : false, 
+			"should_block" : false
+		} ]
+	},
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	{
+		"rule_key" : "eat-submit-initiate",
+		"actions" : [ {
+			"speech" : [ "Well, well, well...what do we have here?", "Let's eat!", "My oh my, look at that!", "Eating is my favorite time of day!", "Looks like a tasty treat for me...", "Yum, Yum... Give me some!", "Ooh, food falls from the sky!", "Feeding time!", "Woo-hoo!" ],
+			"disable_touch" : true
+		}, {
+			"animation" : 6,
+			"disable_touch" : true
+		},{
+			"walk" : -300,
+			"should_block" : false,
+			"disable_touch" : true
+			
+		} ]
+	}, {
+		"rule_key" : "eat-result-timeout",
+		"actions" : [ {
+			"animation" : 7,
+			"move" : [200,1000],
+			"onAnimationStart" : "x$('#food').removeClass('show').removeClass('ease');",
+			"disable_touch" : true
+		} , {
+			"animation" : 20,
+			"speech" : ["Gulp!", "Down the hatch!", "Feed Toby, feed Toby, feed Toby!", "Ooh, food!", "Yeah!"],
+			"sound" : "assets/snd/sfx/squeak4.mp3",
+			"disable_touch" : true
+			}
+		],
+		"state_delta" : {  "happiness" : 1,  "energy" : 1 }
+
+	
+	
+	}, {
+		"rule_key" : "eat-result-notfood",
+		"actions" : [ {
+			"walk" : 225,
+			"disable_touch" : true
+			}, {
+			"animation" : 8,
+			"speech" : ["Mr. Itsy would be upset with you for feeding me that...", "I assume you're just teasing me now with that %s...", "You're lucky I'm in a good mood if you're giving me that %s...", "I guess I've been naughty if you're giving me that %s...", "I don't really want that %s...", "No thanks...that %s isn't food...", "You're just being mean now by serving me that %s...", "What have I done to deserve that %s?", "Come on...I'm not eating that %s...", "I'm not mad at you, I'm just disappointed with that %s..."], 
+			"sound" : "assets/snd/sfx/clown_honk.mp3",
+			"onAnimationStart" : "setTimeout(function(){x$('#food').addClass('kick');}, 700);",
+			"disable_touch" : true
+		} ],
+		"state_delta" : {  "happiness" : -1 }
+
+		
+		
+	}, {
+		"rule_key" : "eat-result-unhealthy",
+		"actions" : [ {
+			"animation" : 7,
+			"move" : [200,1000],
+			"onAnimationStart" : "x$('#food').removeClass('show').removeClass('ease');",
+			"disable_touch" : true
+		} , {
+			"animation" : 24,
+			"speech" : ["I wonder what Mr. Itsy would say about that...", "That %s is not good for me!", "Mmm, wow...I think I just gained 10 lbs. from that %s...", "Mmm, that %s was so good yet so bad...", "Phew, that %s sure tasted good, but I may pay for it later...", "Why does the most unhealthy food like that %s taste so good?", "That %s will help me learn what I should eat as I get older...", "I'm not mad at you, I'm just disappointed with that %s..."],
+			"sound" : "assets/snd/sfx/refuse.mp3",
+			"disable_touch" : true
+			}
+		],
+		"state_delta" : {  "happiness" : 1,  "energy" : 1 }
+		
+		
+		
+	}, {
+		"rule_key" : "eat-result-neutral",
+		"actions" : [ {
+			"animation" : 7,
+			"move" : [200,1000],
+			"onAnimationStart" : " x$('#food').removeClass('show').removeClass('ease');",
+			"disable_touch" : true
+		}  , {
+			"animation" : 20,
+			"speech" : ["That %s was okay!", "This %s is keeping me happy, thanks!", "Was so hungry...that %s made me feel better!", "Would have rather had something other than %s...", "Was that %s? Oh...okay...", "Thanks for that %s!"],
+			"sound" : "assets/snd/sfx/shake3.mp3",
+			"duration" : 3000,
+			"disable_touch" : true
+		}], 
+		"state_delta" : {  "happiness" : 1,  "energy" : 2 }
+		
+		
+		
+		
+		
+	}, {
+		"rule_key" : "eat-result-healthy",
+		"actions" : [ {
+			"animation" : 7,
+			"move" : [200,1000],
+			"onAnimationStart" : "x$('#food').removeClass('show').removeClass('ease');",
+			"disable_touch" : true
+		}  , {
+			"animation" : 19,
+			"speech" : ["That %s is the type of food Mr. Itsy would always feed me!", "I loved %s!", "Ooh, that %s makes me wanna get my body movin'!", "Me and that %s were made for each other!", "That %s was so good for me...I feel energized!", "Phew, thanks for that %s 'cuz I was wicked hungry!", "That %s was very very very very yummy...", "Oh man, that %s sure did hit the spot...", "Munch, munch...that %s was yummy...more!"],
+			"sound" : "assets/snd/sfx/neutral.mp3",
+			"disable_touch" : true
+			}],
+		"state_delta" : {  "happiness" : 1,  "energy" : 3 }
+	
+	
+	
+	
+	
+	
+	
+	}, {
+		"rule_key" : "eat-remember-notfood",
+		"actions" : [ {
+			"speech" : ["Mr. Itsy wouldn't have tried to feed me that!", "I don't think I should have eaten that %s", "You know I'm starving, so why would you feed me that %s?", "Blah, that %s wasn't food...", "What did I do to deserve that %s? Ugh..."],
+			"sound" : "assets/snd/sfx/clown_honk.mp3"
+		} ],
+		"state_delta" : {  "happiness" : -2,  "energy" : -1 }
+	}, {
+		"rule_key" : "eat-remember-unhealthy",
+		"actions" : [ {
+			"speech" : ["Whoa, Mr. Itsy probably wouldn't want me to eat that...", "That %s was not good for me!", "What, you expect me to eat whatever you give me?  Like that %s?", "Eh, grumble...that %s was unexpected...", "I hope that %s comes out better than it went down..."],
+			"sound" : "assets/snd/sfx/refuse.mp3"
+			}
+		],
+		"state_delta" : {   "energy" : -1 }
+	}, {
+		"rule_key" : "eat-remember-neutral",
+		"actions" : [ {
+			"speech" : ["That %s was yummy!", "Eh...that %s was pretty good...", "That %s? Better than nuthin' I suppose...", "That %s. That'll do for now..."],
+			"sound" : "assets/snd/sfx/shake3.mp3"
+		}], 
+		"state_delta" : {   "energy" : 1 }
+	}, {
+		"rule_key" : "eat-remember-healthy",
+		"actions" : [ {
+			"speech" : ["Mr. Itsy would be proud of you for feeding me that %s!", "That %s was really healthy!", "That %s is giving me an extra boost!", "That %s was very very very very yummy...", "Oh man, that %s sure did hit the spot..." ],
+			"sound" : "assets/snd/sfx/neutral.mp3"
+		}],
+		"state_delta" : {  "happiness" : 1,  "energy" : 2 }
+	
+	
+	
+	
+	
+	
+	}, {
+		"rule_key" : "auto-load-load"
+
+	}, {
+		"rule_key" : "level-complete-1",
+		"state_delta" : {  "level" : 1 }
+	}, {
+		"rule_key" : "level-complete-2",
+		"state_delta" : {  "level" : 1 }
+	}, {
+		"rule_key" : "level-complete-3",
+		"state_delta" : {  "level" : 1, "happiness_max" : 1 }
+	}, {
+		"rule_key" : "level-complete-4",
+		"state_delta" : {  "level" : 1 }
+	}, {
+		"rule_key" : "level-complete-5",
+		"state_delta" : {  "level" : 1, "energy_max" : 1 }
+	}, {
+		"rule_key" : "level-complete-6",
+		"state_delta" : {  "level" : 1 }
+	}, {
+		"rule_key" : "level-complete-7",
+		"state_delta" : {  "level" : 1 }
+	}, {
+		"rule_key" : "level-complete-8",
+		"state_delta" : {  "level" : 1 }
+	}, {
+		"rule_key" : "level-complete-9",
+		"state_delta" : {  "level" : 1 }
+	}, {
+		"rule_key" : "level-complete-10",
+		"state_delta" : {  "level" : 1 }
+
+
+	
+	}, {
+		"rule_key" : "sleep-sleeping-start",
+		"actions" : [ {
+			"animation" : 2,
+			"animation_lib" : "assets/ani/giraffe/sleep.html",
+			"disable_touch" : true
+		}, {
+			"animation" : 3,
+			"animation_lib" : "assets/ani/giraffe/sleep.html",
+			"disable_touch" : true,
+			"onAnimationStart" : "x$('#dog_house_front').setStyle('z-index',11);"
+				
+		}, {
+			"animation" : 1,
+			"animation_lib" : "assets/ani/giraffe/sleep.html",
+			"disable_touch" : true, 
+			"should_queue" : true, 
+			"should_block" : false,
+			"duration" : 1200000
+		}		
+		] 
+	}, {
+		"rule_key" : "sleep-sleeping-sleep",
+		"state_delta" : {  "happiness" : 1 },
+		"actions" : [ {
+			"animation" : 1,
+			"animation_lib" : "assets/ani/giraffe/sleep.html",
+			"sound" : "assets/snd/bgm/dream.mp3",
+			"disable_touch" : true,
+			"onAnimationStart" : "aniCommon.play('assets/ani/sleep/index.html', function(){x$('#sleeping_for_clock').setStyle('display', 'block'); goals.doEvent('sleep-sleeping-sleep');}); "
+		} ] 
+	}, {
+		"rule_key" : "sleep-sleeping-nap",
+		"state_delta" : {  "happiness" : 1 },
+		"actions" : [ {
+			"animation" : 1,
+			"animation_lib" : "assets/ani/giraffe/sleep.html",
+			"sound" : "assets/snd/bgm/dream.mp3",
+			"disable_touch" : true,
+			"onAnimationStart" : "aniCommon.play('assets/ani/sleep/index.html', function(){x$('#sleeping_for_clock').setStyle('display', 'block'); goals.doEvent('sleep-sleeping-nap');}); "
+		} ]
+	}, {
+		"rule_key" : "sleep-sleeping-fail",
+		"actions" : [ {
+			"animation" : 4,
+			"animation_lib" : "assets/ani/giraffe/sleep.html",
+			"disable_touch" : true,
+			"onAnimationEnd" : "x$('#dog_house_front').setStyle('z-index',5);"
+		},{
+			"speech" : ["I'm not tired!"],
+			"animation" : 1
+		} ] 
+	}, {
+		"rule_key" : "sleep-sleeping-end",
+		"actions" : [ {
+			"animation" : 4,
+			"animation_lib" : "assets/ani/giraffe/sleep.html",
+			"disable_touch" : true,
+			"onAnimationEnd" : "x$('#dog_house_front').setStyle('z-index',5);"
+		} ] 
+	}, {
+		"rule_key" : "sleep-sleeping-continue",
+		"actions" : [ {
+			"animation" : 1,
+			"animation_lib" : "assets/ani/giraffe/sleep.html",
+			"disable_touch" : true, 
+			"onAnimationStart" : "x$('#dog_house_front').setStyle('z-index',11);  x$('#sleeping_for_clock').setStyle('display', 'block');",
+			"duration" : 10000000
+		} ] 
+	}
+	
+	]

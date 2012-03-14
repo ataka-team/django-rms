@@ -1,0 +1,4 @@
+include README
+recursive-include rms/templates *
+recursive-include rms/static *
+recursive-include rms/locale *

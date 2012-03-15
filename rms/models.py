@@ -2,15 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
 
-#XXX:
-import settings as settings
-
-class Error(Exception):
-    def __init__(self, value, _object):
-        self.value = value
-        self._object = _object
-    def __str__(self):
-        return str(self._object) + " - " + repr(self.value)
+from django.conf import settings
 
 class Application(models.Model):
     class Meta:
@@ -21,7 +13,6 @@ class Application(models.Model):
     appid = models.CharField(max_length=50)
     icon = models.ImageField(_("image"),
             upload_to="images", blank=True)
-    # descrition = models.TextField(max_length=1000)
 
     def clone_deep(self):
         a = Application (
@@ -148,7 +139,7 @@ class Category(models.Model):
 
         catid_candidate = self.catid
 
-        # XXX: "all" its a kyetword using to refer to all categories
+        # XXX: "all" its a keyword using to refer to all categories
         if catid_candidate.strip() == "all":
             catid_candidate = "all_"
 
@@ -163,9 +154,6 @@ class RuleKey(models.Model):
         ordering = ['keyname']
 
     keyname = models.CharField(max_length=100)
-
-    #TODO: Recover the id of Application
-    # application = models.ForeignKey(Application)
 
     category = models.ForeignKey(Category, blank=False, null=False)
 
@@ -193,12 +181,6 @@ class RuleKey(models.Model):
         return res
 
 
-    def get_appid(self):
-        return self.application.appid
-    def set_appid(self, appid):
-        self.application.appid = appid
-    appid = property(get_appid, set_appid)
-
     def get_catid(self):
         return self.category.catid
     def set_catid(self, catid):
@@ -216,7 +198,6 @@ class Rule(models.Model):
     locale = models.CharField(max_length=20)
     weight = models.IntegerField(default=1)
     rule_data = models.TextField(max_length=1000)
-    # description = models.TextField(max_length=1000)
     slug = models.SlugField()
 
     rule_key = models.ForeignKey(RuleKey, blank=False, null=False)
@@ -225,11 +206,6 @@ class Rule(models.Model):
 
     def __unicode__(self):
         return self.slug
-
-    # def get_slug(self):
-    #     # TODO: Avoid conflicts
-    #     return self.message.lower().strip().replace(" ", "-")
-    # slug = property(get_slug)
 
     def get_application_name(self):
         return self.application.appname

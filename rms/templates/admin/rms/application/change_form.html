@@ -69,11 +69,13 @@
              <fieldset class="module ">
                  <h2> Tools</h2>
             <div class="actions">
-              <label> New locale: 
+              <label> Locale: 
                   <input  value="" maxlength="6" size="6"
                    id="input-clone-locale" type="text">
                 </label>
-              <button id="button-clone" class="button" type="button">Clone locale</button> 
+              <button id="button-clone-locale" class="button" type="button">Clone locale</button> 
+              <button id="button-new-locale" class="button" type="button">New locale</button> 
+              <button id="button-delete-locale" class="button" type="button">Delete locale</button> 
 
                 <!-- <button id="button-clone-application" class="button" type="button">
                     Clone application
@@ -193,7 +195,6 @@ function clone_locale(){
           var answer = confirm("Do you want clone \"" + current_locale + 
                 "\" locale to \"" + new_locale + "\" locale?");
           if (answer){
-                var locales_items = [];
         $.getJSON('/locale/clone?id={{ object_id }}&currentlocale=' +
                         current_locale + '&newlocale=' + new_locale, function(data) { 
                         alert ("Locale cloned");
@@ -204,6 +205,47 @@ function clone_locale(){
 
 }
 
+
+function new_locale(){
+    var new_locale = $("#input-clone-locale").val();
+    tmp = new_locale.split("-");
+    if (tmp.length != 2){
+        alert ("\"" + new_locale + "\" isn't a valid locale.");
+    }
+    else{
+          var answer = confirm("Do you want create \"" + 
+                new_locale + "\" locale?");
+          if (answer){
+        $.getJSON('/locale/new?id={{ object_id }}&newlocale=' +
+                        new_locale, function(data) { 
+                        alert ("Locale created");
+                        location.reload();
+        });
+            }
+    }
+
+}
+
+
+function delete_locale(){
+    var locale = $("#input-clone-locale").val();
+    tmp = locale.split("-");
+    if (tmp.length != 2){
+        alert ("\"" + locale + "\" isn't a valid locale.");
+    }
+    else{
+          var answer = confirm("Do you really want delete \"" + locale + 
+                "\" locale and all related rules?");
+          if (answer){
+        $.getJSON('/locale/delete?id={{ object_id }}&locale=' +
+                        locale, function(data) { 
+                        alert ("Locale deleted");
+                        location.reload();
+        });
+            }
+    }
+
+}
 
 $( function() {
   var table_cat_items = [];
@@ -404,7 +446,9 @@ $( function() {
   
   $("#button-update").click(change_deleted_visibility);
 
-  $("#button-clone").click(clone_locale);
+  $("#button-clone-locale").click(clone_locale);
+  $("#button-new-locale").click(new_locale);
+  $("#button-delete-locale").click(delete_locale);
   $("#button-clone-application").click(clone_application);
   $("#button-export-locale").click(export_locale);
 

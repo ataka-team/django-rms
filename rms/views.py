@@ -230,6 +230,45 @@ def clone_application(request, _id=None):
 
 @transaction.commit_on_success
 @login_required
+def new_locale(request):
+      try:
+        _id = _get_parameter(request, "id")
+      except Exception, e:
+        raise Http404
+      if not _id:
+        raise Http404
+      
+      try:
+        new_locale = _get_parameter(request, "newlocale")
+      except Exception, e:
+        raise Http404
+      if not new_locale:
+        raise Http404
+      new_locale = new_locale.lower()
+
+      if len(new_locale.split("-"))<2:
+        raise Http404
+
+      try:
+        a = Application.objects.get(id=_id)
+      except Exception, e:
+        print e
+        raise Http404
+        
+      try:
+        a.new_locale(new_locale)        
+      except Exception, e:
+        print e
+        raise Http404
+
+      json_responses = {}
+      json_responses["message"] = "Done"
+      json_responses["result"] = 0
+      
+      return _json_response(json_responses,False)
+
+@transaction.commit_on_success
+@login_required
 def clone_locale(request):
       try:
         _id = _get_parameter(request, "id")
@@ -272,6 +311,41 @@ def clone_locale(request):
         print e
         raise Http404
 
+
+      json_responses = {}
+      json_responses["message"] = "Done"
+      json_responses["result"] = 0
+      
+      return _json_response(json_responses,False)
+
+
+@transaction.commit_on_success
+@login_required
+def delete_locale(request):
+      try:
+        _id = _get_parameter(request, "id")
+      except Exception, e:
+        raise Http404
+
+      try:
+        locale = _get_parameter(request, "locale")
+      except Exception, e:
+        raise Http404
+      if not locale:
+        raise Http404
+      locale = locale.lower()
+
+      try:
+        a = Application.objects.get(id=_id)
+      except Exception, e:
+        print e
+        raise Http404
+      
+      try:
+        a.delete_locale(locale)        
+      except Exception, e:
+        print e
+        raise Http404
 
       json_responses = {}
       json_responses["message"] = "Done"
@@ -417,14 +491,9 @@ def locales_by_application(request,_id):
     Get locales availables by application.id (non application.appid)
     '''
 
-    try:
-        a = Application.objects.get(id=_id)
-        locales = a.get_available_locales()
-        return _json_response(locales)
-        
-    except Exception, e:
-        print e
-        raise Http404
-
+    a = Application.objects.get(id=_id)
+    locales = a.get_available_locales()
+    return _json_response(locales, False)
+    
 
 

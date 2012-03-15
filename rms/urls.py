@@ -20,6 +20,7 @@ urlpatterns = patterns('rms.views',
     (r'^app/(?P<_id>\d+)/clone$',
         'clone_application',
         None, 'rms-app-clone'),
+
     (r'^app/clone$',
         'clone_application',
         None, 'rms-app-clone-params'),
@@ -31,6 +32,14 @@ urlpatterns = patterns('rms.views',
     (r'^locale/clone$',
         'clone_locale',
         None, 'rms-app-clone-locale-params'),
+
+    (r'^locale/delete$',
+        'delete_locale',
+        None, 'rms-app-delete-locale-params'),
+
+    (r'^locale/new$',
+        'new_locale',
+        None, 'rms-app-new-locale-params'),
 
     (r'^locales/(?P<_id>\d+)$',
         'locales_by_application',

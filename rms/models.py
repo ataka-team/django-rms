@@ -26,6 +26,12 @@ class Application(models.Model):
             c_clone = c.clone_deep()
             c_clone.application=a
             c_clone.save()
+            
+        al_list = ApplicationLocale.objects.filter(application=self)
+        for al in al_list:
+            al_clone = al.clone_deep()
+            al_clone.application=a
+            al_clone.save()
         return a
 
     def get_related_rules(self):
@@ -47,8 +53,41 @@ class Application(models.Model):
         return res
 
 
+    def new_locale(self, localename):
+        al = ApplicationLocale(application=self, 
+            localename=localename)
+        al.save()
+
+    def delete_locale(self, localename):
+        
+        al_list = ApplicationLocale.objects.filter(application=self)
+        for al in al_list:
+            print "<<<"
+            print al.localename
+            print localename
+            print ">>>"
+            if al.localename == localename.strip():
+                print "true"
+                al.delete()
+                
+        r_list = self.get_related_rules()
+        for r in r_list:
+            if r.locale == localename.strip():
+                r.delete()
+
+
     def get_available_locales(self):
         res = []
+
+        # Adding already registered locales
+        al_list = ApplicationLocale.objects.filter(application=self)
+        for al in al_list:
+            _al = al.localename
+            try:
+                res.index(_al)
+            except ValueError:
+                res.append(_al)
+
         c_list = Category.objects.filter(application=self)
 
         if len(c_list)==0:
@@ -66,7 +105,12 @@ class Application(models.Model):
                     res.index(_l)
                   except ValueError:
                     res.append(_l)
-
+                    # Registering new locale
+                    al = ApplicationLocale(application=self, 
+                        localename=_l)
+                    al.save()
+                    
+        
         return res
 
 
@@ -98,6 +142,31 @@ class Application(models.Model):
 
         super(Application, self).save(*args, **kwargs)
 
+class ApplicationLocale(models.Model):
+    class Meta:
+        verbose_name = 'Application locale'
+        ordering = ['localename']
+        
+    localename = models.CharField(max_length=20)
+    
+    application = models.ForeignKey(Application, 
+        blank=False, null=False)
+
+    def clone_deep(self):
+        al = ApplicationLocale (
+                localename=self.localename,
+                application=self.application
+                )
+        al.save()
+        return r
+
+    def to_dict(self):
+        res = {}
+        res["localename"] = self.localename
+        return res
+
+    def __unicode__(self):
+        return self.localename
 
 
 class Category(models.Model):
@@ -107,7 +176,6 @@ class Category(models.Model):
 
     catname = models.CharField(max_length=100)
     catid = models.CharField(max_length=50)
-    # description = models.TextField(max_length=1000)
 
     application = models.ForeignKey(Application)
 

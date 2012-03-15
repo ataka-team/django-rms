@@ -70,7 +70,7 @@
                  <h2> Tools</h2>
             <div class="actions">
               <label> Locale: 
-                  <input  value="" maxlength="6" size="6"
+                  <input  value="" maxlength="7" size="7"
                    id="input-clone-locale" type="text">
                 </label>
               <button id="button-clone-locale" class="button" type="button">Clone locale</button> 
@@ -209,7 +209,7 @@ function clone_locale(){
 function new_locale(){
     var new_locale = $("#input-clone-locale").val();
     tmp = new_locale.split("-");
-    if (tmp.length != 2){
+    if (tmp.length != 2 && new_locale != "default"){
         alert ("\"" + new_locale + "\" isn't a valid locale.");
     }
     else{
@@ -311,12 +311,6 @@ $( function() {
               '   <input name="rulekey-' + key_rk + '-keyname" value="' + keyname + '" ' +
               '          class="row2 vTextField" maxlength="100" id="rulekey-' + key_rk + '-keyname" type="text">' +
               ' </div>' + 
-              {# ' <div class="td">' + #}
-              {# '   <a class="add-rules" id="add-rules-' + key_rk + '" href="#" >' + "Add"  + '</a>' + #}
-              {# ' </div>' + #}
-              {# ' <div class="td align-right">' + #}
-              {# '   <input name="rulekey-' + key_rk + '-DELETE" id="rulekey-' + key_rk + '-DELETE" type="checkbox">' + #}
-              {# ' </div>' + #}
               ' <div class="rules expandable" id="expandable-rules-' + key_rk + '" >' +
               '   <div class="th align-left"> </div>  <div class="th"> Message </div>' +
               '   <div class="th"> Slug </div> <div class="th"> Weight </div>' +
@@ -342,14 +336,9 @@ $( function() {
           '   <input name="category-' + key_cat + '-catid" value="' + catid + '" ' +
           '          class="row1 vTextField" maxlength="50" id="category-' + key_cat + '-catid" type="text">' +
           ' </div>' + 
-          {# ' <div class="td align-right">' +  #}
-          {# '   <input name="category-' + key_cat + '-DELETE" id="category-' + key_cat + '-DELETE" type="checkbox">' +  #}
-          {# ' </div>' +  #}
           ' <div class="rulekeys expandable" id="expandable-rulekeys-' + key_cat + '" >' +
                     '   <div class="th align-left"> </div> ' + 
                     '   <div class="th"> Key name</div> ' +
-            {#        '   <div class="th"> Add new rule </div> ' +  #}
-          {#            '   <div class="th align-right"> Delete? </div>' + #}
           ' <ul class="tr">' +
           table_rulekeys_items.join('\n') +
           ' </ul></div>' +
@@ -379,8 +368,6 @@ $( function() {
     table_body.appendTo(table);
   
 
-        // console.log($(".expand"));
-
     $(".add-rules").click(function(event) {
         tmp = $(event.target).attr("id").split("-");
         $('#expandable-' + tmp[1]+ '-' + tmp[2]).show();
@@ -393,30 +380,30 @@ $( function() {
     $(".rule-ruledata").change(function(event) {
         try
         {
-                    res = $(event.target).val();
-                    res = res.replace(new RegExp("true",'g'),"TrueF");
-                        res = res.replace(new RegExp("false",'g'),"FalseF");
-                        res = res.replace(new RegExp("null",'g'),"NoneF");
-                    res = res.replace(new RegExp("True",'g'),"true");
-                    res = res.replace(new RegExp("False",'g'),"false");
-                        res = res.replace(new RegExp("None",'g'),"null");
+            res = $(event.target).val();
+            res = res.replace(new RegExp("true",'g'),"TrueF");
+            res = res.replace(new RegExp("false",'g'),"FalseF");
+            res = res.replace(new RegExp("null",'g'),"NoneF");
+            res = res.replace(new RegExp("True",'g'),"true");
+            res = res.replace(new RegExp("False",'g'),"false");
+            res = res.replace(new RegExp("None",'g'),"null");
 
-                        res = 'x = ' + res;
-                        // alert (res);
-                        eval (res + ";");
+            res = 'x = ' + res;
+            eval (res + ";");
+            
             $(event.target).css({
-              'background-color': '#cfc', 
-                            'border': '5px solid #4f5'});
-                        if ($(event.target).hasClass('rule-ruledata-incorrect')){
-                          $(event.target).removeClass("rule-ruledata-incorrect");
-                        }
+                'background-color': '#cfc', 
+                'border': '5px solid #4f5'});
+            if ($(event.target).hasClass('rule-ruledata-incorrect')){
+                $(event.target).removeClass("rule-ruledata-incorrect");
+            }
         }
         catch(err)
         {
-          $(event.target).css({
-            'background-color': '#fbb', 
-            'border': '5px solid #f44'});
-          $(event.target).addClass("rule-ruledata-incorrect");
+            $(event.target).css({
+                'background-color': '#fbb', 
+                'border': '5px solid #f44'});
+            $(event.target).addClass("rule-ruledata-incorrect");
         }
 
     });

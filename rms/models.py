@@ -62,12 +62,7 @@ class Application(models.Model):
         
         al_list = ApplicationLocale.objects.filter(application=self)
         for al in al_list:
-            print "<<<"
-            print al.localename
-            print localename
-            print ">>>"
             if al.localename == localename.strip():
-                print "true"
                 al.delete()
                 
         r_list = self.get_related_rules()
@@ -138,7 +133,8 @@ class Application(models.Model):
               break
 
           suffix = suffix + 1
-          appid_candidate = original_appid + " duplicate " + unicode(suffix)
+          appid_candidate = \
+            original_appid + " duplicate " + unicode(suffix)
 
         super(Application, self).save(*args, **kwargs)
 
@@ -270,7 +266,8 @@ class Rule(models.Model):
 
     rule_key = models.ForeignKey(RuleKey, blank=False, null=False)
     category = models.ForeignKey(Category, blank=False, null=False)
-    application = models.ForeignKey(Application, blank=False, null=False)
+    application = \
+        models.ForeignKey(Application, blank=False, null=False)
 
     def __unicode__(self):
         return self.slug

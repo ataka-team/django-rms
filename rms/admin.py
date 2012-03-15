@@ -5,31 +5,39 @@ from django.forms import ModelForm, PasswordInput, CharField
 from django.db import transaction
 
 
-
-
 def process_submited_files(request):
+    '''
+    Proccess submited files attached to the request.
+    
+    Note that currently only proccess icon files added for applications
+    '''
 
     for k in request.FILES.keys():
-      _k = k.split("-")
-      if not len(_k) == 3:
-          print k + " : " + request.POST[k]
-      else:
-          try:
-            if k.startswith("application-"):
-                _,_id, _value = k.split("-")
+        _k = k.split("-")
+        if not len(_k) == 3:
+            print k + " : " + request.POST[k]
+        else:
+            try:
+                if k.startswith("application-"):
+                    _,_id, _value = k.split("-")
 
-                _app = Application.objects.get(id=_id)
+                    _app = Application.objects.get(id=_id)
 
-                if _value == "icon":
-                    _app.icon = request.FILES[k]
+                    if _value == "icon":
+                        _app.icon = request.FILES[k]
 
-                _app.save()
-          except Exception,e:
-            print "Error: " + str(e) + " (Updating file for " + str(k) + " key)"
-
+                    _app.save()
+            except Exception,e:
+                #IDEA: Add logger support
+                # print "Error: " + str(e) + \
+                #   " (Updating file for " + str(k) + " key)"
+                pass
 
 
 def get_submited_values_helper(request):
+    '''
+    Prepare a dict with the representation of the data submited.
+    '''
 
     categories = {}
     rulekeys = {}
@@ -38,83 +46,74 @@ def get_submited_values_helper(request):
 
     for k in request.POST:
         if k.startswith("application-"):
-                      if not len(k.split("-")) == 3:
-                          print k + " : " + request.POST[k]
-                      else:
-                          _,_id, _value = k.split("-")
-                          if not applications.has_key(_id):
-                              applications[_id] = {}
-                          applications[_id][_value] = request.POST[k]
+            if not len(k.split("-")) == 3:
+                print k + " : " + request.POST[k]
+            else:
+                _,_id, _value = k.split("-")
+                if not applications.has_key(_id):
+                    applications[_id] = {}
+                applications[_id][_value] = request.POST[k]
 
-                          # To delete rules
-                          if _value == "DELETE":
-                              # print k = application-8-DELETE
-                              # print request.POST[k] = on
-                              applications[_id]["deleted"] = True
+                # To delete applications
+                if _value == "DELETE":
+                    applications[_id]["deleted"] = True
 
-                          # new12121
-                          if _id.startswith("new"):
-                              applications[_id]["add"] = True
+                # new12121
+                if _id.startswith("new"):
+                    applications[_id]["add"] = True
 
         if k.startswith("rule-"):
-                      if not len(k.split("-")) == 3:
-                          print k + " : " + request.POST[k]
-                      else:
-                          _,_id, _value = k.split("-")
-                          if not rules.has_key(_id):
-                              rules[_id] = {}
-                          rules[_id][_value] = request.POST[k]
+            if not len(k.split("-")) == 3:
+                print k + " : " + request.POST[k]
+            else:
+                _,_id, _value = k.split("-")
+                if not rules.has_key(_id):
+                    rules[_id] = {}
+                rules[_id][_value] = request.POST[k]
 
-                          # To delete rules
-                          if _value == "DELETE":
-                              # print k = rule-8-DELETE
-                              # print request.POST[k] = on
-                              rules[_id]["deleted"] = True
+                # To delete rules
+                if _value == "DELETE":
+                    rules[_id]["deleted"] = True
 
-                          # new12121
-                          if _id.startswith("new"):
-                              rules[_id]["add"] = True
+                # new12121
+                if _id.startswith("new"):
+                    rules[_id]["add"] = True
 
 
         if k.startswith("category-"):
-                      if not len(k.split("-")) == 3:
-                          print k + " : " + request.POST[k]
-                      else:
-                          _,_id, _value = k.split("-")
-                          if not categories.has_key(_id):
-                              categories[_id] = {}
-                          categories[_id][_value] = request.POST[k]
+            if not len(k.split("-")) == 3:
+                print k + " : " + request.POST[k]
+            else:
+                _,_id, _value = k.split("-")
+                if not categories.has_key(_id):
+                    categories[_id] = {}
+                categories[_id][_value] = request.POST[k]
 
-                          # To delete categories
-                          if _value == "DELETE":
-                              # print k = category-8-DELETE
-                              # print request.POST[k] = on
-                              categories[_id]["deleted"] = True
+                # To delete categories
+                if _value == "DELETE":
+                    categories[_id]["deleted"] = True
 
-                          # new12121
-                          if _id.startswith("new"):
-                              categories[_id]["add"] = True
-
+                # new12121
+                if _id.startswith("new"):
+                    categories[_id]["add"] = True
 
 
         if k.startswith("rulekey-"):
-                      if not len(k.split("-")) == 3:
-                          print k + " : " + request.POST[k]
-                      else:
-                          _,_id, _value = k.split("-")
-                          if not rulekeys.has_key(_id):
-                              rulekeys[_id] = {}
-                          rulekeys[_id][_value] = request.POST[k]
+            if not len(k.split("-")) == 3:
+                print k + " : " + request.POST[k]
+            else:
+                _,_id, _value = k.split("-")
+                if not rulekeys.has_key(_id):
+                    rulekeys[_id] = {}
+                rulekeys[_id][_value] = request.POST[k]
 
-                          # To delete rulekeys
-                          if _value == "DELETE":
-                              # print k = rulekey-8-DELETE
-                              # print request.POST[k] = on
-                              rulekeys[_id]["deleted"] = True
+                # To delete rulekeys
+                if _value == "DELETE":
+                    rulekeys[_id]["deleted"] = True
 
-                          # new12121
-                          if _id.startswith("new"):
-                              rulekeys[_id]["add"] = True
+                # new12121
+                if _id.startswith("new"):
+                    rulekeys[_id]["add"] = True
 
 
     return {"categories":categories, "rulekeys":rulekeys,
@@ -183,7 +182,10 @@ def process_rules(rules):
                     rule_cloned.save()
 
         except Exception,e:
-            print "Error: " + str(e) + " (Updating rule " + str(k) + ")"
+            #IDEA: Add logger support.
+            # print "Error: " + str(e) + \
+            #     " (Updating rule " + str(k) + ")"
+            pass
 
 
 def process_rulekeys(rulekeys,categories):
@@ -196,8 +198,9 @@ def process_rulekeys(rulekeys,categories):
                     if v.has_key("category"):
                         _cat_id = v["category"]
 
-                        # If es -new- compararlo en categories ya que
-                        # es una categoria que se esta creando.
+                        # If is "-new-" try to compare with categories 
+                        # should be a new category currently in creation
+                        # process.
                         if _cat_id.startswith("new"):
                             _cat_id = categories[_cat_id]["newid"]
 
@@ -222,7 +225,10 @@ def process_rulekeys(rulekeys,categories):
                     _rk.keyname = v["keyname"]
                 _rk.save()
         except Exception,e:
-            print "Error: " + str(e) + " (Updating rule key" + str(k) + ")"
+            #IDEA: Add logger support.
+            # print "Error: " + str(e) + \
+            #   " (Updating rule key" + str(k) + ")"
+            pass
 
 
 def process_categories(categories):
@@ -235,7 +241,8 @@ def process_categories(categories):
                 if k.startswith("new"):
                     if v.has_key("application"):
                         _application_id = v["application"]
-                        _app = Application.objects.get(id=_application_id)
+                        _app = \
+                            Application.objects.get(id=_application_id)
                         _c = Category(application=_app)
 
                         if v.has_key("catid"):
@@ -259,7 +266,10 @@ def process_categories(categories):
                     _c.catid = v["catid"]
                 _c.save()
         except Exception,e:
-            print "Error: " + str(e) + " (Updating category" + str(k) + ")"
+            #IDEA: Add logger support.
+            # print "Error: " + str(e) + \
+            #   " (Updating category" + str(k) + ")"
+            pass
 
 
 def process_applications(applications):
@@ -299,7 +309,10 @@ def process_applications(applications):
 
                 _a.save()
         except Exception,e:
-            print "Error: " + str(e) + " (Updating application" + str(k) + ")"
+            #IDEA: Add logger support.
+            # print "Error: " + str(e) + \
+            #   " (Updating application" + str(k) + ")"
+            pass
 
 
 
@@ -338,8 +351,6 @@ def delete_selected_items(modeladmin, request, queryset):
 delete_selected_items.short_description = "Delete selected items"
 
 def update_all_items(modeladmin, request, queryset):
-    # print request.POST
-    # print request.FILES
     if request.POST:
 
         process_submited_files(request)
@@ -370,10 +381,14 @@ class ApplicationAdmin(admin.ModelAdmin):
     model = Application
     fieldsets = [
         (None,               {'fields': ['appid','appname']}),
-        ('Other information', {'fields': ['icon',], 'classes': ['collapse']}),
+        ('Other information', 
+            {'fields': ['icon',], 'classes': ['collapse']}),
     ]
-    actions = [clone_selected_items,delete_selected_items,update_all_items]
-    list_per_page = 250
+    actions = [ clone_selected_items,
+                delete_selected_items,
+                update_all_items ]
+                
+    list_per_page = 50
 
     def get_actions(self, request):
         actions = super(ApplicationAdmin, self).get_actions(request)
@@ -386,36 +401,34 @@ class ApplicationAdmin(admin.ModelAdmin):
         print request.POST
         if (len(request.POST)>1):
 
-              if request.FILES.has_key("localefile"):
-                  f = request.FILES["localefile"]
+            if request.FILES.has_key("localefile"):
+                f = request.FILES["localefile"]
 
-                  for l in f:
-                      try:
-                          k,v = l.split("=")
-                          slug = k.strip().replace('"','')
-                          message = v.strip().replace('"','')
+                for l in f:
+                    try:
+                        k,v = l.split("=")
+                        slug = k.strip().replace('"','')
+                        message = v.strip().replace('"','')
 
-                          found_rules = \
-                                 Rule.objects.filter(
+                        found_rules = \
+                                Rule.objects.filter(
                                    slug=slug,
                                    )
-                          if len(found_rules)>0:
-                              # print found_rules[0].to_apple_string_format()
-                              # TODO: Verify this
-                              found_rules[0].message = message
-                              found_rules[0].save()
-                      except Exception, e:
-                          print e
+                        if len(found_rules)>0:
+                            found_rules[0].message = message
+                            found_rules[0].save()
+                    except Exception, e:
+                        print e
 
-              tmp = get_submited_values_helper(request)
-              categories = tmp["categories"]
-              rulekeys = tmp["rulekeys"]
-              rules = tmp["rules"]
+            tmp = get_submited_values_helper(request)
+            categories = tmp["categories"]
+            rulekeys = tmp["rulekeys"]
+            rules = tmp["rules"]
 
-              # Categories can be modified adding "newid" attribute
-              process_categories(categories)
-              process_rulekeys(rulekeys,categories)
-              process_rules(rules)
+            # Categories can be modified adding "newid" attribute
+            process_categories(categories)
+            process_rulekeys(rulekeys,categories)
+            process_rules(rules)
 
 
 

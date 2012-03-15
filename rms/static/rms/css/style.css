@@ -156,3 +156,13 @@ ul{
   padding: 0;
 }
 
+.rule-ruledata-incorrect {
+    background-color: #fbb !important;
+    border: 5px solid #f44 !important;
+}
+
+
+.rule-ruledata-correct {
+    background-color: #cfc !important;
+    border: 5px solid #4f5 !important;
+}

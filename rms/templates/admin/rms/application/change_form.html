@@ -391,18 +391,16 @@ $( function() {
             res = 'x = ' + res;
             eval (res + ";");
             
-            $(event.target).css({
-                'background-color': '#cfc', 
-                'border': '5px solid #4f5'});
             if ($(event.target).hasClass('rule-ruledata-incorrect')){
                 $(event.target).removeClass("rule-ruledata-incorrect");
             }
+            $(event.target).addClass("rule-ruledata-correct");
         }
         catch(err)
         {
-            $(event.target).css({
-                'background-color': '#fbb', 
-                'border': '5px solid #f44'});
+            if ($(event.target).hasClass('rule-ruledata-correct')){
+                $(event.target).removeClass("rule-ruledata-correct");
+            }
             $(event.target).addClass("rule-ruledata-incorrect");
         }
 
@@ -412,8 +410,8 @@ $( function() {
      
     $(".vTextField").focus(active_input);
     $(".vTextField").focusout(deactive_input);
-    $(".vLargeTextField").focus(active_input);
-    $(".vLargeTextField").focusout(deactive_input);
+    /* $(".vLargeTextField").focus(active_input); */
+    /* $(".vLargeTextField").focusout(deactive_input); */
     
     setTimeout(function() { change_deleted_visibility(); }, 2000); 
 

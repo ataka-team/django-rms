@@ -2,23 +2,43 @@ from django.template import Context
 from django.template import loader
 from django.http import Http404
 from django.http import HttpResponse
+from django.http import HttpResponsePermanentRedirect
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
-from django.http import HttpResponsePermanentRedirect
-
 from django.core.urlresolvers import reverse
-
 from django.db import transaction
+
+from django.conf import settings
 
 from rms.models import *
 
 import simplejson
 import datetime
 
-from django.conf import settings
+def _json_response(locales,cache_control=True):
+    '''
+    Prepare a JSON HttpResponse for a dict/list or similar JSON 
+    compatible objects
+    '''
+    hr =  HttpResponse(simplejson.dumps(locales),
+        mimetype='application/json;charset=utf-8')
+    hr['Character-Set'] = 'UTF-8'
+    
+    if cache_control:
+        try:
+            hr['Cache-Control'] = settings.HTTP_CACHE_CONTROL
+        except Exception:
+            pass
+        
+    return hr
 
 def _get_parameter(request, name):
+    '''
+    Helper: abstraction to recover paremeters from POST or GET 
+    either
+    '''
+
     if request.POST:
         try:
           return request.POST[name]
@@ -31,76 +51,116 @@ def _get_parameter(request, name):
           raise e
 
 def _get_rules_by_category (app_id, cat_id, locale="default"):
-
+    '''
+    Helper: Return a JSON with the rules for a category of a specific 
+    application by a concrete locale. If no locale is set, "default" 
+    locale will be used.
+    
+    Result example:
+    
+        {
+            "charactertouch-poke-head": [
+                {
+                    "rule": "{'is_play': True, 'actions': [ ... ]}",
+                    "message": "Yo...",
+                    "slug": "yo2",
+                    "weight": 6
+                }
+            ]
+        }
+    
+    '''
+    
     _locale = locale.lower()
 
-    json_responses = {}
+    json_response = {}
 
     try:
-      a = Application.objects.get(appid=app_id)
-      c_list = Category.objects.filter(catid=cat_id,application=a)
+        a = Application.objects.get(appid=app_id)
+        c_list = Category.objects.filter(catid=cat_id,application=a)
 
-      if len(c_list)==0:
-          print "No category found"
-          return {}
+        if len(c_list)==0:
+            #IDEA: Add logger support.
+            #IDEA: Add JSON error protocol.
+            # print "No category found"
+            return {}
 
-      rk_list = \
+        rk_list = \
               RuleKey.objects.filter(category=c_list[0])
-      if len(rk_list)==0:
-          print "No rule keys found"
-          return {}
+        if len(rk_list)==0:
+            #IDEA: Add logger support.
+            #IDEA: Add JSON error protocol.            
+            # print "No rule keys found"
+            return {}
 
-      r_list = []
-      for i in rk_list:
-          aux = Rule.objects.filter(
+        r_list = []
+        for i in rk_list:
+            aux = Rule.objects.filter(
                             rule_key=i,
                             locale=_locale
                             )
-          # print unicode(i.keyname) + " 1: " + _locale
-          if len(aux)==0:
-              # aux = Rule.objects.filter(
-              #               rule_key=i,
-              #               locale__startswith=_locale.split("-")[0] + "-"
-              #               )
-              # # there are other similar languages
-              # if len(aux)>0:
-              #     _l = aux[0].locale
-              #     # print unicode(i.keyname) + " 2: " + (_l)
-              #     aux = Rule.objects.filter(
-              #               rule_key=i,
-              #               locale=_l
-              #               )
-              # # using "default" as default
-              # else:
-              #     # print unicode(i.keyname) + " 3: default"
-              #     aux = Rule.objects.filter( ...
-              aux = Rule.objects.filter(
+            # print unicode(i.keyname) + " 1: " + _locale
+            if len(aux)==0:
+                # XXX: Behaviour modification requested by customer:
+                #
+                # Old: logic: 
+                #   - If locale has >0 Rules for a RuleKey -> Return them
+                #   - If locale has 0 Rules for a RuleKey
+                #   - Search rules in a similar locale
+                #   - If similar locale has >0 Rules for a RuleKey -> Return them
+                #       - Search rules in the "en-us" locale
+                #       - If "en-us" locale has >0 Rules for a RuleKey -> Return them
+                # New: logic: 
+                #   - If locale has >0 Rules for a RuleKey -> Return them
+                #   - If locale has 0 Rules for a RuleKey
+                #   - Search rules in the "default" locale
+                #   - If "defaut" locale has >0 Rules for a RuleKey -> Return them
+                #
+                #
+                # aux = Rule.objects.filter(
+                #               rule_key=i,
+                #               locale__startswith=_locale.split("-")[0] + "-"
+                #               )
+                # # there are other similar languages
+                # if len(aux)>0:
+                #     _l = aux[0].locale
+                #     # print unicode(i.keyname) + " 2: " + (_l)
+                #     aux = Rule.objects.filter(
+                #               rule_key=i,
+                #               locale=_l
+                #               )
+                # # using "default" as default
+                # else:
+                #     # print unicode(i.keyname) + " 3: default"
+                #     aux = Rule.objects.filter( ...
+                aux = Rule.objects.filter(
                             rule_key=i,
                             locale="default"
                             )
 
-          for ii in aux:
-             r_list.append(ii)
+            for ii in aux:
+                r_list.append(ii)
 
-      for rule in r_list:
-          try:
-            keyname = rule.rule_key.keyname
-            if rule.weight <= 0:
-               continue
+        for rule in r_list:
+            try:
+                keyname = rule.rule_key.keyname
+                if rule.weight <= 0:
+                    continue
 
-            if not json_responses.has_key(keyname):
-                json_responses[keyname] = []
+                if not json_response.has_key(keyname):
+                    json_response[keyname] = []
 
-            json_responses[keyname].append(rule.to_dict())
+                json_response[keyname].append(rule.to_dict())
 
-          except Exception, e:
-            print e
+            except Exception, e:
+                print e
 
     except Exception, e:
-        print e
+        #IDEA: Add logger support.
+        # print e
         raise Http500
 
-    return json_responses
+    return json_response
 
 
 def rules(request, app_id, cat_id=None):
@@ -133,15 +193,7 @@ def rules(request, app_id, cat_id=None):
           json_responses = \
             _get_rules_by_category (app_id, cat_id, _locale)
 
-      hr =  HttpResponse(simplejson.dumps(json_responses),
-                           mimetype='application/json;charset=utf-8')
-      hr['Character-Set'] = 'UTF-8'
-      try:
-          hr['Cache-Control'] = settings.HTTP_CACHE_CONTROL
-      except Exception:
-          pass
-
-      return hr
+      return _json_response(json_responses,False)
 
     except Exception, e:
         print e
@@ -173,10 +225,7 @@ def clone_application(request, _id=None):
     json_responses = {}
     json_responses["message"] = "Done"
     json_responses["result"] = 0
-    hr =  HttpResponse(simplejson.dumps(json_responses),
-                           mimetype='application/json;charset=utf-8')
-    hr['Character-Set'] = 'UTF-8'
-    return hr
+    return _json_response(json_responses,False)
 
 
 @transaction.commit_on_success
@@ -227,11 +276,8 @@ def clone_locale(request):
       json_responses = {}
       json_responses["message"] = "Done"
       json_responses["result"] = 0
-      hr =  HttpResponse(simplejson.dumps(json_responses),
-                           mimetype='application/json;charset=utf-8')
-      hr['Character-Set'] = 'UTF-8'
-      return hr
-
+      
+      return _json_response(json_responses,False)
 
 
 @login_required
@@ -271,7 +317,6 @@ def export_locale(request):
       hr =  HttpResponse(res, mimetype='text/plain')
       hr['Content-Disposition'] = "attachment;filename=locale_%s.txt" \
         % locale
-
       return hr
 
 
@@ -318,10 +363,7 @@ def rules_by_application(request, _id, cat_id=None):
 
 
       json_responses = categories
-      hr =  HttpResponse(simplejson.dumps(json_responses),
-                           mimetype='application/json;charset=utf-8')
-      hr['Character-Set'] = 'UTF-8'
-      return hr
+      return _json_response(json_responses,False)
 
     except Exception, e:
         print e
@@ -333,7 +375,8 @@ def all_rules(request):
     for a in Application.objects.all():
         _a = {}
 
-        c_list = Category.objects.filter(application=a).order_by('catid')
+        c_list = \
+            Category.objects.filter(application=a).order_by('catid')
 
         categories = []
         for c in c_list:
@@ -366,25 +409,19 @@ def all_rules(request):
         _a["icon"] = a.icon.name
         json_responses.append(_a)
 
-    hr =  HttpResponse(simplejson.dumps(json_responses),
-                           mimetype='application/json;charset=utf-8')
-    hr['Character-Set'] = 'UTF-8'
-    return hr
-
+    return _json_response(json_responses,False)
 
 
 def locales_by_application(request,_id):
+    '''
+    Get locales availables by application.id (non application.appid)
+    '''
 
     try:
-      a = Application.objects.get(id=_id)
-
-      locales = a.get_available_locales()
-
-      hr =  HttpResponse(simplejson.dumps(locales),
-                           mimetype='application/json;charset=utf-8')
-      hr['Character-Set'] = 'UTF-8'
-      return hr
-
+        a = Application.objects.get(id=_id)
+        locales = a.get_available_locales()
+        return _json_response(locales)
+        
     except Exception, e:
         print e
         raise Http404

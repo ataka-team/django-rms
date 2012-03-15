@@ -377,41 +377,25 @@ $( function() {
 
     $(".add-rules").click(add_rule);
 
-    $(".rule-ruledata").change(function(event) {
-        try
-        {
-            res = $(event.target).val();
-            res = res.replace(new RegExp("true",'g'),"TrueF");
-            res = res.replace(new RegExp("false",'g'),"FalseF");
-            res = res.replace(new RegExp("null",'g'),"NoneF");
-            res = res.replace(new RegExp("True",'g'),"true");
-            res = res.replace(new RegExp("False",'g'),"false");
-            res = res.replace(new RegExp("None",'g'),"null");
-
-            res = 'x = ' + res;
-            eval (res + ";");
-            
-            if ($(event.target).hasClass('rule-ruledata-incorrect')){
-                $(event.target).removeClass("rule-ruledata-incorrect");
-            }
-            $(event.target).addClass("rule-ruledata-correct");
-        }
-        catch(err)
-        {
-            if ($(event.target).hasClass('rule-ruledata-correct')){
-                $(event.target).removeClass("rule-ruledata-correct");
-            }
-            $(event.target).addClass("rule-ruledata-incorrect");
-        }
-
-    });
+    $(".rule-ruledata").change(check_ruledata);
     
     $(".vTextField").keypress(disable_enter_key);
      
     $(".vTextField").focus(active_input);
     $(".vTextField").focusout(deactive_input);
-    /* $(".vLargeTextField").focus(active_input); */
-    /* $(".vLargeTextField").focusout(deactive_input); */
+    $(".vLargeTextField").focus(active_input);
+    $(".vLargeTextField").focusout(deactive_input);
+    
+    $.each($(".rule-ruledata"), function(k, v) {
+        val = $(v).val();
+        try {
+            val = JSON.stringify(JSON.parse(val), null, "  ");
+        }
+        catch (err){
+            console.log(val);
+        }
+        $(v).val(val); 
+    });
     
     setTimeout(function() { change_deleted_visibility(); }, 2000); 
 

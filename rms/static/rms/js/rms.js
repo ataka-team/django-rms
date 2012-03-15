@@ -17,6 +17,28 @@ function disable_enter_key(event) {
     }
 }
 
+function check_ruledata(event) {
+    try
+    {
+        res = $(event.target).val();
+        res = JSON.parse(res);
+        $(event.target).val(JSON.stringify(res, null, "  "));
+        
+        if ($(event.target).hasClass('rule-ruledata-incorrect')){
+            $(event.target).removeClass("rule-ruledata-incorrect");
+        }
+        $(event.target).addClass("rule-ruledata-correct");
+    }
+    catch(err)
+    {
+        if ($(event.target).hasClass('rule-ruledata-correct')){
+            $(event.target).removeClass("rule-ruledata-correct");
+        }
+        $(event.target).addClass("rule-ruledata-incorrect");
+    }
+
+}
+
 function update_locale() {
     var locale = $("#select-locales").val();
     $(".message").hide();
@@ -142,6 +164,20 @@ function add_rule(event){
     $(".vTextField").blur(deactive_input);
     $(".vLargeTextField").focus(active_input);
     $(".vLargeTextField").blur(deactive_input);
+
+    $(".rule-ruledata").change(check_ruledata);
+    
+    $.each($(".rule-ruledata"), function(k, v) {
+        val = $(v).val();
+        try {
+            val = JSON.stringify(JSON.parse(val), null, "  ");
+        }
+        catch (err){
+            console.log(val);
+        }
+        $(v).val(val); 
+    });
+
 
     new_rule_cursor = new_rule_cursor + 1;
 

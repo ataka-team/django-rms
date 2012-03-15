@@ -398,7 +398,6 @@ class ApplicationAdmin(admin.ModelAdmin):
 
     @transaction.commit_on_success
     def change_view(self, request, object_id, extra_context=None):
-        print request.POST
         if (len(request.POST)>1):
 
             if request.FILES.has_key("localefile"):

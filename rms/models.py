@@ -154,7 +154,7 @@ class ApplicationLocale(models.Model):
                 application=self.application
                 )
         al.save()
-        return r
+        return al
 
     def to_dict(self):
         res = {}

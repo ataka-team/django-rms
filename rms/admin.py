@@ -5,7 +5,6 @@ from django.forms import ModelForm, PasswordInput, CharField
 from django.db import transaction
 
 
-# admin.site.disable_action('delete_selected')
 
 
 def process_submited_files(request):
@@ -376,8 +375,6 @@ class ApplicationAdmin(admin.ModelAdmin):
     actions = [clone_selected_items,delete_selected_items,update_all_items]
     list_per_page = 250
 
-    # inlines = [CategoryInline]
-
     def get_actions(self, request):
         actions = super(ApplicationAdmin, self).get_actions(request)
         if 'delete_selected' in actions:
@@ -434,6 +431,7 @@ class RuleKeyAdmin(admin.ModelAdmin):
 
     inlines = [RulesInline]
 
+
 class RuleAdmin(admin.ModelAdmin):
     list_display = ('message', 'slug' ,'locale', 'weight',
             'category', 'application', 'rule_key')
@@ -443,10 +441,7 @@ class RuleAdmin(admin.ModelAdmin):
     exclude = ('application', 'category')
 
 
-
-
 admin.site.register(Application,ApplicationAdmin)
-# admin.site.register(Application)
 # admin.site.register(Category)
 # admin.site.register(RuleKey,RuleKeyAdmin)
 admin.site.register(Rule,RuleAdmin)

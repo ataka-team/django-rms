@@ -335,9 +335,9 @@ def clone_locale(request):
         r_list = a.get_related_rules()
         for r in r_list:
             if r.locale == c_locale:
-                r.clone_deep()
-                r.locale = new_locale
-                r.save()
+                r_clone = r.clone_deep()
+                r_clone.locale = new_locale
+                r_clone.save()
     except Exception, e:
         print e
         raise Http404

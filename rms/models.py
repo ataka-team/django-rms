@@ -309,14 +309,17 @@ class Rule(models.Model):
     def save(self, *args, **kwargs):
         self.locale = self.locale.lower()
 
-        s = slugify(self.message)
-
+        s = slugify(self.message)        
+        
         # If empty message, slug from rule_key.keyname
         if s.strip() == "":
             s = self.rule_key.keyname
 
         if len(s) > 28:
             s = s[:28]
+            
+        if self.slug.strip() != "":
+            s = self.slug.strip()
 
         # Avoid slug ended with '-'
         while True:
@@ -328,21 +331,22 @@ class Rule(models.Model):
         original_s = s
         suffix = 0
         while True:
-          found_rules = \
+            found_rules = \
                     Rule.objects.filter(
                             slug=s,
                             )
-          if len(found_rules) == 1:
-              if found_rules[0] == self:
+            
+            if len(found_rules) == 1 and \
+            found_rules[0] == self:
                 self.slug = s
                 break
 
-          if len(found_rules) == 0:
-              self.slug = s
-              break
-
-          suffix = suffix + 1
-          s = original_s + unicode(suffix)
+            if len(found_rules) == 0:
+                self.slug = s
+                break
+                
+            suffix = suffix + 1
+            s = original_s + unicode(suffix)
 
         self.category = self.rule_key.category
         self.application = self.rule_key.category.application

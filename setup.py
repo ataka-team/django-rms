@@ -25,7 +25,7 @@ setup(
     packages = find_packages(),
     package_data={
         'rms': [
-            'templates/*/*.html',
+            'templates/*/*/*.html',
             'static/*/css/*.css',
             'static/*/img/*',
             'static/*/js/*.js',
@@ -34,7 +34,7 @@ setup(
 
     zip_safe=False,
     install_requires=[
-        "django-cms>=2.1",
+        "django",
     ],
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",

@@ -25,7 +25,7 @@ setup(
     packages = find_packages(),
     package_data={
         'rms': [
-            'templates/*/*/*.html',
+            'templates/admin/rms/application/*.html',
             'static/*/css/*.css',
             'static/*/img/*',
             'static/*/js/*.js',

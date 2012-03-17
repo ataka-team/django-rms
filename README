@@ -1,24 +1,388 @@
 
-Setup
------
 
- TODO
+Introduction
+-------------------------------------------------------------------------------
+RMS (Rule Management System) is a Django app which allow manage several data
+rules in oreder to server then by locale.
+
+Installation
+-------------------------------------------------------------------------------
 
 
-Available settings for settings.py::
+Getting Django
+==============
 
-  HTTP_CACHE_CONTROL = 'max-age=600, must-revalidate'
+Prerequirements
+~~~~~~~~~~~~~~
 
-See more about on http://www.web-caching.com/mnot_tutorial/how.html
+Tip.
+  Execute next commands as root. Note that some of the following intrucctions 
+  are based on YUM. For any other packages manager you should use equivalent 
+  commmands.
+  
+- Base packages needed::
+
+    yum install gcc python-devel # in order to compile PIL (Python Image Library)
+    yum install python-simplejson.i686
+    yum install python-setuptools.noarch
+
+
+-Getting PiP (Python package Index)::
+
+    # http://www.pip-installer.org/en/latest/index.html
+    curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python
+
+
+- Installing Django::
+
+    pip install Django
+
+
+
+Getting RMS Django application
+==============================
+
+- Get a clone of RMS Git repository.  
+- Go into local git repository.
+- Install RMS application::
+
+    python setup.py  install
+ 
+
+
+
+
+
+
+
+Getting a Django project enviroment for the RMS Django application
+==================================================================
+ 
+
+
+Starting a Django project enviroment for the RMS Django application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Execute as `root` in order to start a Django project::
+
+ adduser django
+ mkdir /var/local/django
+ chown django:django  /var/local/django
+ su django
+ cd  /var/local/django
+ django-admin.py startproject www_rms
+
+
+
+
+Setting RMS Django application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+- Extra settings availables in `settings.py`::
+
+    HTTP_CACHE_CONTROL = 'max-age=600, must-revalidate'
+
+  See more about on http://www.web-caching.com/mnot_tutorial/how.html
+
+
+- In `/var/local/django/www_rms/` dir, edit `settings.py` as follow::
+		
+		# Django settings for www_rms project.
+		
+		DEBUG = True
+		TEMPLATE_DEBUG = DEBUG
+		
+		ADMINS = (
+		    # ('Your Name', 'your_email@example.com'),
+		)
+		
+		MANAGERS = ADMINS
+		
+		import os 
+		PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
+		
+		
+		DATABASES = {
+		    'default': {
+		        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+		        'NAME': os.path.join(PROJECT_DIR, 'www_rms.db'),                      # Or path to database file if using sqlite3.
+		        'USER': '',                      # Not used with sqlite3.
+		        'PASSWORD': '',                  # Not used with sqlite3.
+		        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+		        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+		    }
+		}
+		
+		# Local time zone for this installation. Choices can be found here:
+		# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
+		# although not all choices may be available on all operating systems.
+		# On Unix systems, a value of None will cause Django to use the same
+		# timezone as the operating system.
+		# If running in a Windows environment this must be set to the same as your
+		# system time zone.
+		TIME_ZONE = 'America/Chicago'
+		
+		# http://www.web-caching.com/mnot_tutorial/how.html
+		HTTP_CACHE_CONTROL = 'max-age=600, must-revalidate'
+		
+		# Language code for this installation. All choices can be found here:
+		# http://www.i18nguy.com/unicode/language-identifiers.html
+		LANGUAGE_CODE = 'en-us'
+		
+		DEFAULT_CHARSET = "utf-8"
+		
+		SITE_ID = 1
+		
+		# If you set this to False, Django will make some optimizations so as not
+		# to load the internationalization machinery.
+		USE_I18N = True
+		
+		# If you set this to False, Django will not format dates, numbers and
+		# calendars according to the current locale
+		USE_L10N = True
+		
+		# Absolute filesystem path to the directory that will hold user-uploaded files.
+		# Example: "/home/media/media.lawrence.com/media/"
+		MEDIA_ROOT = '/var/local/django/www_rms/media/'
+		# MEDIA_ROOT = ''
+		
+		# URL that handles the media served from MEDIA_ROOT. Make sure to use a
+		# trailing slash.
+		# Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
+		MEDIA_URL = '/media/'
+		
+		# Absolute path to the directory static files should be collected to.
+		# Don't put anything in this directory yourself; store your static files
+		# in apps' "static/" subdirectories and in STATICFILES_DIRS.
+		# Example: "/home/media/media.lawrence.com/static/"
+		STATIC_ROOT = '/var/local/django/www_rms/static/'
+		
+		# URL prefix for static files.
+		# Example: "http://media.lawrence.com/static/"
+		STATIC_URL = '/static/'
+		
+		# URL prefix for admin static files -- CSS, JavaScript and images.
+		# Make sure to use a trailing slash.
+		# Examples: "http://foo.com/static/admin/", "/static/admin/".
+		ADMIN_MEDIA_PREFIX = '/static/admin/'
+		
+		# Additional locations of static files
+		STATICFILES_DIRS = (
+		    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+		    # Always use forward slashes, even on Windows.
+		    # Don't forget to use absolute paths, not relative paths.
+		    # "/usr/share/pyshared/feincms/static/",
+		)
+		
+		# List of finder classes that know how to find static files in
+		# various locations.
+		STATICFILES_FINDERS = (
+		    'django.contrib.staticfiles.finders.FileSystemFinder',
+		    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+		#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+		)
+		
+		# Make this unique, and don't share it with anybody.
+		SECRET_KEY = '#yj5q&wq@7g)+5a93pey97ae-ru4p#e-3m)vjjko#ggqjz(^_a'
+		
+		# List of callables that know how to import templates from various sources.
+		TEMPLATE_LOADERS = (
+		    'django.template.loaders.filesystem.Loader',
+		    'django.template.loaders.app_directories.Loader',
+		#     'django.template.loaders.eggs.Loader',
+		)
+		
+		MIDDLEWARE_CLASSES = (
+		    'django.middleware.common.CommonMiddleware',
+		    'django.contrib.sessions.middleware.SessionMiddleware',
+		    'django.middleware.csrf.CsrfViewMiddleware',
+		    'django.contrib.auth.middleware.AuthenticationMiddleware',
+		    'django.contrib.messages.middleware.MessageMiddleware',
+		)
+		
+		ROOT_URLCONF = 'www_rms.urls'
+		
+		TEMPLATE_DIRS = (
+		    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+		    # Always use forward slashes, even on Windows.
+		    # Don't forget to use absolute paths, not relative paths.
+		    # "/var/local/django/www_rms/templates",
+		)
+		
+		INSTALLED_APPS = (
+		    'django.contrib.auth',
+		    'django.contrib.contenttypes',
+		    'django.contrib.sessions',
+		    'django.contrib.sites',
+		    'django.contrib.messages',
+		    'django.contrib.staticfiles',
+		    # Uncomment the next line to enable the admin:
+		    'django.contrib.admin',
+		    # Uncomment the next line to enable admin documentation:
+		    # 'django.contrib.admindocs',
+		    'rms',
+		)
+		
+		# A sample logging configuration. The only tangible logging
+		# performed by this configuration is to send an email to
+		# the site admins on every HTTP 500 error.
+		# See http://docs.djangoproject.com/en/dev/topics/logging for
+		# more details on how to customize your logging configuration.
+		LOGGING = {
+		    'version': 1,
+		    'disable_existing_loggers': False,
+		    'handlers': {
+		        'mail_admins': {
+		            'level': 'ERROR',
+		            'class': 'django.utils.log.AdminEmailHandler'
+		        }
+		    },
+		    'loggers': {
+		        'django.request': {
+		            'handlers': ['mail_admins'],
+		            'level': 'ERROR',
+		            'propagate': True,
+		        },
+		    }
+		}
+		 
+		
+
+- In `/var/local/django/www_rms/` dir, execute::
+
+    python manage.py  syncdb
+    # Follow steps showed by the wizard
+
+- In `/var/local/django/www_rms/` dir,edit `rules.py` as follow::
+
+    from django.conf.urls.defaults import patterns, include, url  
+    from django.conf import settings
+    from django.contrib import admin
+    
+    admin.autodiscover()
+
+    urlpatterns = patterns('',
+      url(r'^admin/', include(admin.site.urls)),
+      url(r'', include('rms.urls')),
+    )
+
+
+    # if settings.DEBUG:
+    if DEBUG:
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    )
+
+
+
+Importing rules from a file with old format 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- In `/var/local/django/www_rms/` dir, execute:: 
+    
+    cp <<rms git repo dir>>/r-importer.py .
+
+- Put the file with old format rules in `/var/local/django/www_rms/`.
+- Rename file with old rules to `rules.json`
+- Execute `python r-importer.py` command
+ 
+ 
+ 
+ 
+Configuring Nginx
+==================
+
+Prerequirements
+~~~~~~~~~~~~~~
+
+- Install Nginx::
+
+    yum install nginx
+
+- Install Flup (Random assortment of WSGI servers)::
+
+    pip install flup
+
+Launch RMS Django project as a FastCGI service
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Change to executable the `manage.py` file::
+
+    chmod  +x  /var/local/django/www_rms/manage.py
+    
+- Add folling line to `/etc/rc.local`::
+
+    su django -c "/var/local/django/www_rms/manage.py runfcgi \
+      host=127.0.0.1 port=8002 outlog=/dev/null  errlog=/dev/null"
+      
+- Read more about this in Django website::
+
+    w3m https://docs.djangoproject.com/en/dev/howto/deployment/fastcgi/
+
+Setting Nginx
+~~~~~~~~~~~~
+
+In `/etc/nginx/conf.d/` dir, add `rms.conf` file as following;:
+
+  server {
+
+  listen   80;
+                
+  access_log  /var/log/nginx/www_rms.access.log;
+
+  location / {
+      # host and port to fastcgi server
+      fastcgi_pass 127.0.0.1:8002;
+      fastcgi_param SERVER_NAME $server_name;
+      fastcgi_param SERVER_PORT $server_port;
+      fastcgi_param SERVER_PROTOCOL $server_protocol;
+      fastcgi_param PATH_INFO $fastcgi_script_name;
+      fastcgi_param REQUEST_METHOD $request_method;
+      fastcgi_param QUERY_STRING $query_string;
+      fastcgi_param CONTENT_TYPE $content_type;
+      fastcgi_param CONTENT_LENGTH $content_length;
+
+      fastcgi_param  REMOTE_ADDR $remote_addr;
+      fastcgi_param  X-Real-IP  $remote_addr;
+      fastcgi_param  X-Forwarded-For  $remote_addr;
+
+      fastcgi_pass_header Authorization;
+      fastcgi_intercept_errors off;
+      
+      allow all;
+
+  }
+
+  location /static/rms/ {
+    alias /usr/lib/python2.6/site-packages/django_rms-0.0.0-py2.6.egg/rms/static/rms/;
+    break;
+  }
+
+  location /static/admin/ {
+    alias /usr/lib/python2.6/site-packages/django/contrib/admin/media/;
+    break;
+  }
+
+  }
+
+- Restart Nginx service::
+
+    service nginx restart
+
+
+- Check if the site is running::
+
+      w3m http://localhost:80/admin/
+
+
+
 
 Repository
-----------
+-------------------------------------------------------------------------------
   
- TODO. For example:
-
-  - URL: https://github.com/psaavedra/django-rms
-
+ * Empty*
 
 References
-----------
-  TODO
+-------------------------------------------------------------------------------
+  *Empty*
